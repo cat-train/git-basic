@@ -91,7 +91,7 @@
 						* Bathrooms.
 						* Drinks.
 						* Fire exits.
-						* Please interupt to ask questions.
+						* Please interrupt to ask questions.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Introduction
@@ -144,9 +144,9 @@
 						* Figure out when bugs were introduced
 						* Understand the reasoning behind some code
 						* Revert changes
-						* Assign blame
+						* Attribution for work done
 						</div>
-						<aside class="notes">
+						<aside data-markdown class="notes">
 						* You are working with other people who use it
 						* You want to maintain multiple versions of the same thing
 						* You need to coordinate changes across multiple files
@@ -321,8 +321,9 @@
 						$ git config --global core.autocrlf true
 						```
 						Note:
-						Is anyone using windows? you can't use gedit, and you don't
-						want to use notepad, try:<br>
+						Is anyone using Windows? you can't use gedit, and you don't
+						want to use notepad, try:
+
 						- notepad++
 						- wordpad
 						- ANYTHING else!
@@ -354,7 +355,7 @@
 						# Or just edit the files
 						# ..Global data is stored in "~/.gitconfig"
 						$ gedit ~/.gitconfig
-						
+
 						# ..Project data is stored in "/tmp/test/.git/config"
 						$ gedit /tmp/test/.git/config
 						```
@@ -630,9 +631,9 @@
 					<section data-markdown>
 						## Change Logs
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
+          <section data-markdown data-separator-notes="^Note:">
 						### Change Logs
-						Use ```git log```
+						Use `git log`
 						```bash
 						$ git log
 						commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
@@ -654,6 +655,8 @@
 							Add a message.
 						```
 						By default the output is piped into $PAGER
+						Note:
+						If $PAGER is not set, defaults to using `less`.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Change Logs
@@ -1011,7 +1014,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Creating Repositories - Revisited
-						We already know how to create a new repositry
+						We already know how to create a new repository
 						```bash
 						$ git init
 						Initialized empty Git repository in .git/
@@ -1219,10 +1222,7 @@
 
 						Also introduce the idea that commands have defaults:
 
-						- git push ... git push origin master
-						-
-						-
-						-
+						- git push &rarr; git push origin master
 					</section>
 				</section>
 
