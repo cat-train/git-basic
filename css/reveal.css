@@ -227,7 +227,7 @@ body {
   bottom: 12px;
   right: 12px;
   left: auto;
-  z-index: 1;
+  z-index: 30;
   color: #000;
   pointer-events: none;
   font-size: 10px; }
