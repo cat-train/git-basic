@@ -402,7 +402,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Tell Git to track those files
-						```git add```
+						'```git add```'
 						```bash
 						$ git add myscript.pl
 						```
@@ -516,7 +516,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Committing changes - some options
-						You don't have to ```git add``` all your changes manually
+						You don't have to '```git add```' all your changes manually
 						```bash
 						# Add FILE, and then commit
 						$ git commit FILE
@@ -527,7 +527,7 @@
 						```
 						```bash
 						# You can choose different editor for this commit...
-						$ EDITOR=vim git commit -a
+						$ GIT_EDITOR=vim git commit -a
 						```
 						```bash
 						# You don't have to use an editor at all...
@@ -546,10 +546,14 @@
 						0 files changed, 0 insertions(+), 0 deletions(-)
 						mode change 100644 => 100755 myscript.pl
 						```
+						Note:
+						Windows file permissions don't map neatly into git,
+						So unless they're also sharing files with Linux or Macs,
+						you can pretty much ignore this part.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - Move
-						To rename a file use ```git mv```
+						To rename a file use '```git mv```'
 						```bash
 						$ git mv myscript.pl README.txt
 						```
@@ -573,7 +577,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - Delete
-						To delete a file use ```git rm```
+						To delete a file use '```git rm```'
 						```bash
 						# This won't actually work, because we haven't
 						# created "another-script.pl"
@@ -689,35 +693,27 @@
 						```
 					</section>
 
-					<section>
-					<div data-markdown>
-						### Change Logs - Annotate
+					<section data-markdown data-separator-notes="^Note:">
+						### Change Logs - Blame
 						Show who made changes to what line
+
 						```bash
-						$ git annotate filename.pl
-						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 2)
-						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 3) print "silly script\n";
-						9c08faf4  (Bad Coder 2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
-						```
-						Who is this Bad Coder?
-					</div>
-					<div class="fragment" data-markdown>
-						```bash
-						# Better remembered as `git blame`
 						$ git blame filename.pl
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2)
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
 						9c08faf4 (Bad Coder   2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
 						```
-					</div>
+						Note:
+						Note the short versions of the commit hashes, so you can check in the logs for commit messages, etc.
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
 						### Change logs - GUI
-						Not strictly change logs, but...  gitk / qgit / gitg / etc
+						Visualising your logs:  `gitk` / `qgit` / `gitg` / etc.
 						![image](images/gitk.png "gitk")
+						Note:
+						For something like VSCode, the 'Git Branch' extension will give you a similar view.
 					</section>
 				</section>
 
@@ -726,20 +722,20 @@
 						## More on Commits
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Some more concepts - commits
-						* It is important to understand that git thinks in ```commits```
+						### Commit Concepts
+						* A commit is git's fundamental building block
 						* Each commit refers to a previous commit (its parent)
 						* Commits can be referenced by their SHA1 checksum
 							* or an abbreviation of it
-							* or by a number of things that might refer to them
-						* ```gitk``` lets you visualise the commit history, which
-							helps a lot
+							* or by a number of things that might refer to them (e.g. tags)
+						* ```gitk``` and other tools can help you to visualise the commit history
 					</section>
-					<section>
-						<h3>Commits are....</h3>
-						<marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee>
+					<section data-markdown>
+						### Commits are...
+
+						## Totally Unchangeable!
 						<aside class="notes">
-						This means that once you have committed your work, it is really safe
+						So once you have committed your work, it is really safe in the repo.
 						</aside>
 					</section>
 				</section>
@@ -750,16 +746,16 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Branching - List
-						To show branches use ```git branch```
+						To show branches, use '```git branch```'.
 						```bash
 						$ git branch
 						* master
 						```
-						Only one branch, called ```master```
+						Only one branch, called ```master```.
 
-						The '*' indicates that it is your current branch
+						The '*' indicates that it is your current branch.
 						Note:
-						You can also use 'git status'
+						You can also use 'git status'.
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
@@ -927,10 +923,10 @@
 
 					<section data-markdown data-separator-notes="^Note:">
 						### Merging - Fixing conflicts
-						Lots of tools to help fix things up.  Hand edit, xxdiff,
-						smartmerge, etc
+						Lots of ways to help fix things up: hand-edit, `xxdiff`,
+						`smartmerge`, etc.
 
-						We'll just fix it by editing the file
+						We'll just fix it by editing the file:
 						```bash
 						$ gedit README.txt
 						$ cat README.txt
@@ -944,11 +940,13 @@
 						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
 						appropriate to mark resolution and make a commit, or use 'git commit -a'.
 						```
+						Note:
+						Git does this to make you be explicit about staging the conflicted files you're resolving. So...
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
-						### Merging - Success at last
-						We need to tell Git that it has been fixed before we commit
+						### Merging - Success at last!
+						We need to tell Git that it has been fixed before we commit:
 						```bash
 						$ git add README.txt
 						$ git commit
@@ -981,9 +979,9 @@
 					</section>
 					<section data-markdown>
 						### Tags
-						Tags allow you to mark specific points in history as being important
+						* Tags allow you to mark specific points (i.e. commits) in history as being important.
 
-						Often people use this functionality to mark release points
+						* Often people use this functionality to mark release points.
 
 						```bash
 						# This is a 'lightweight' tag
@@ -1029,7 +1027,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Creating Repositories - Revisited
-						We already know how to create a new repository
+						We already know how to create a new repository...
 						```bash
 						$ git init
 						Initialized empty Git repository in .git/
@@ -1038,13 +1036,11 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Clone an existing repository
-						In practise, you're more likely to use ```git clone```.
+						In practise, you're more likely to use '```git clone```'.
 
 						To check out the source code of a random project:
 						```bash
 						$ cd /tmp
-						```
-						```bash
 						$ git clone https://github.com/cat-train/example1.git
 						Cloning into example1...
 						remote: Counting objects: 90, done.
@@ -1052,20 +1048,14 @@
 						remote: Total 90 (delta 44), reused 90 (delta 44)
 						Receiving objects: 100% (90/90), 31.62 KiB, done.
 						Resolving deltas: 100% (44/44), done.
-						```
-						```bash
 						$ cd example1
-						```
-						```bash
 						$ ls
-						```
-						```bash
 						$ gitk
 						```
 						Note:
 						- did you notice the oddly coloured branch called 'remotes/origin/master'?
-						- git branch -a
-						- git remote -v
+						- `git branch -a` to show all branches
+						- `git remote -v` to see all remote repositories
 
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
@@ -1078,18 +1068,19 @@
 						  remotes/origin/master
 						```
 						Note:
-						you don't need to type 'remotes' to refer to these branches
+						- origin is where you cloned from
+						- you don't need to type 'remotes' to refer to these branches
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Terminology: Remote branches
-						Remote branches are references (pointers) to the state of
+						* Remote branches are references (pointers) to the state of
 						branches in your remote repositories.
 
-						They're local branches
+						* They're local branches
 						that you can't move; they're moved automatically for you
 						whenever you do any network communication.
 
-						Remote branches act
+						* Remote branches act
 						as bookmarks to remind you where the branches on your remote
 						repositories were the last time you connected to them.
 					</section>
@@ -1203,6 +1194,8 @@
 						They all lived happily ever after...
 
 						![image](images/lastthing6.png "")
+						Note:
+						Do exercise here if you have time.
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
