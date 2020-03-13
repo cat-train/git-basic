@@ -1263,23 +1263,23 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Copy a commit
-						You can copy a commit from one branch to another
+						* You can copy a single commit *from* one branch *to* another
 
-						You might want to do this if, for example, a bug is discovered
+						* You might want to do this if, for example, a bug is discovered
 						on your development branch that also needs to be applied to your
 						production branch.
 						```bash
 						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
 						```
 						Note:
-						The commit created will look the same, but have a
-						different commit id
+						- The commit created will look the same, but have a
+						different commit id.
 
-						Note that the cherry-pick can fail, if there are conflicts
+						- Note that the cherry-pick can fail, if there are conflicts.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Undo a commit
-						You can undo a previous commit with ```git revert```.
+						You can undo a previous commit with '```git revert```'.
 
 						This makes a new commit, that is the exact opposite of a
 						previous commit in your repository.
@@ -1295,12 +1295,12 @@
 						e43a6fd3e94888d76779ad79fb568ed180e5fcdf Introduce bug
 						```
 						Note:
-						When you revert the commit, you get dropped into an editor
-						in case you want to can edit the commit message..
+						- When you revert the commit, you get dropped into an editor
+						in case you want to can edit the commit message.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Getting serious with copying commits
-						As an alternative to merging, you can use ```git rebase```.
+						As an alternative to merging, you can use '```git rebase```'.
 
 						Instead of making a new commit which joins two branches together,
 						it copies your changes on top of the other branch...
@@ -1313,7 +1313,7 @@
 						Draw what this does, contrast it with a merge
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Rebase vs. Merge
+						### Rebase vs. Merge?
 						> One point of view on this is that your repository's commit
 						> history is a record of what actually happened. It's a historical
 						> document, valuable in its own right, and shouldn't be tampered
@@ -1325,6 +1325,7 @@
 
 						Note:
 						- History is an audit trail
+						- From _Pro Git_, by Chacon and Straub
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Rebase vs. Merge
@@ -1341,12 +1342,12 @@
 						### The Perils of Rebasing
 						> Ahh, but the bliss of rebasing isn’t without its drawbacks,
 						> which can be summed up in a single line:
-
-						> Do not rebase commits that exist outside your repository.
-
+						> **Do not rebase commits that exist outside your repository.**
 						> If you follow that guideline, you’ll be fine. If you don’t,
 						> people will hate you, and you’ll be scorned by friends and family.
-
+					</section>
+					<section data-markdown data-separator-notes="^Note:">
+						### The Perils of Rebasing
 						> When you rebase stuff, you’re abandoning existing commits and
 						> creating new ones that are similar but different. If you push
 						> commits somewhere and others pull them down and base work on
@@ -1392,7 +1393,7 @@
 					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
 						#### git reset (simple)
-						If you provide a filename, it is the opposite of ```git add```
+						If you provide a filename, it is the opposite of '```git add```'
 						```bash
 						# This will overwrite the index with whatever is in the
 						# latest commit
@@ -1484,13 +1485,13 @@
 						</div>
 						<div class="fragment">
 						<div data-markdown>
-							The official Git site-> http://git-scm.com/about
+							The official Git site &rarr; http://git-scm.com/about
 
-							Data Assurance-> http://git-scm.com/about/info-assurance
+							Data Assurance &rarr; http://git-scm.com/about/info-assurance
 
-							Cheat sheet-> http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf
+							Cheat sheet &rarr; http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf
 
-							Github-> http://github.com
+							Github &rarr; http://github.com
 
 							---------------------
 						</div>
@@ -1503,8 +1504,6 @@
 							- git add/commit -p<br>
 							- git reflog<br>
 							- git bisect<br>
-							- <br>
-							- <br>
 						</aside>
 					</section>
 				</section>
@@ -1844,6 +1843,7 @@
                 progress: true,
                 history: true,
                 center: true,
+                pdfSeparateFragments: false,
 
                 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
                 transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
