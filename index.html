@@ -59,1759 +59,1759 @@
         <div class="reveal">
 
             <!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section> <!-- Introduction -->
-					<section>
-						<h1 class="catalyst-logo">Catalyst</h1>
-						<h1>Introduction to Git</h1>
-						<!-- Well lit room? Light theme
-						<hr>
-						<small>
-						Theme: <a href="?theme=moon">Dark</a>
-							/ <a href="?theme=solarized">Light</a>
-						</small> -->
-						<aside class="notes">
-							# Make sure the server has a working SSH daemon running
-							<br>
-							<br># Set up shared git repo
-							<br>mkdir /tmp/test3.git
-							<br>cd /tmp/test3.git
-							<br>git init --bare
-							<br>cd /tmp
-							<br>git clone /tmp/test3.git /tmp/work
-							<br>cd /tmp/work
-							<br>echo 'evanwashere' > evan.txt
-							<br>git add  evan.txt
-							<br>git commit -m 'initial commit - one file'
-							<br>git push origin master
-						</aside>
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Administrivia
-						* Bathrooms
-						* Drinks
-						* Fire exits
-						* Please interrupt to ask questions!
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Introduction - What to expect
-						* Slides: https://cat-train.github.io/
-						* Mostly a tutorial (with some lecturing thrown in)
-						* Based on the command line
-						* Designed to demonstrate the concepts
-						* Not exhaustive about all the options
-						Note:
-						The idea here is to get you up and running with the
-						practical concepts of git quickly. Git has a lot
-						of depth, and a lot of options. If we wanted to cover
-						all the options in detail, we'd be here for days.
-						This should give a useful subset for common operations;
-						specifics are available in the documentation.
-					</section>
-					<section data-markdown>
-						### Goals by the end
-						* Understand fundamentals of version control
-						* Install and configure git
-						* Create a repository
-						* Manage files and make commits
-						* Inspect change logs
-						* Work with branches and tags
-						* Push and pull changes with remote repositories
-						* Understand merges and resolve conflicts
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Why do we have this intro course?
-						![why](images/xkcd.png "If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git. Just wait through a few minutes of 'It's really pretty simple, just think of branches as...' and eventually you'll learn the commands that will fix everything.")
-						Note:
-						- git is elegant on the inside, but ugly on the outside
-						- If you understand what is going on, you can look past the
-						  ugly
-					</section>
-				</section>
+            <div class="slides">
+                <section> <!-- Introduction -->
+                    <section>
+                        <h1 class="catalyst-logo">Catalyst</h1>
+                        <h1>Introduction to Git</h1>
+                        <!-- Well lit room? Light theme
+                        <hr>
+                        <small>
+                        Theme: <a href="?theme=moon">Dark</a>
+                            / <a href="?theme=solarized">Light</a>
+                        </small> -->
+                        <aside class="notes">
+                            # Make sure the server has a working SSH daemon running
+                            <br>
+                            <br># Set up shared git repo
+                            <br>mkdir /tmp/test3.git
+                            <br>cd /tmp/test3.git
+                            <br>git init --bare
+                            <br>cd /tmp
+                            <br>git clone /tmp/test3.git /tmp/work
+                            <br>cd /tmp/work
+                            <br>echo 'evanwashere' > evan.txt
+                            <br>git add  evan.txt
+                            <br>git commit -m 'initial commit - one file'
+                            <br>git push origin master
+                        </aside>
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Administrivia
+                        * Bathrooms
+                        * Drinks
+                        * Fire exits
+                        * Please interrupt to ask questions!
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Introduction - What to expect
+                        * Slides: https://cat-train.github.io/
+                        * Mostly a tutorial (with some lecturing thrown in)
+                        * Based on the command line
+                        * Designed to demonstrate the concepts
+                        * Not exhaustive about all the options
+                        Note:
+                        The idea here is to get you up and running with the
+                        practical concepts of git quickly. Git has a lot
+                        of depth, and a lot of options. If we wanted to cover
+                        all the options in detail, we'd be here for days.
+                        This should give a useful subset for common operations;
+                        specifics are available in the documentation.
+                    </section>
+                    <section data-markdown>
+                        ### Goals by the end
+                        * Understand fundamentals of version control
+                        * Install and configure git
+                        * Create a repository
+                        * Manage files and make commits
+                        * Inspect change logs
+                        * Work with branches and tags
+                        * Push and pull changes with remote repositories
+                        * Understand merges and resolve conflicts
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Why do we have this intro course?
+                        ![why](images/xkcd.png "If that doesn't fix it, git.txt contains the phone number of a friend of mine who understands git. Just wait through a few minutes of 'It's really pretty simple, just think of branches as...' and eventually you'll learn the commands that will fix everything.")
+                        Note:
+                        - git is elegant on the inside, but ugly on the outside
+                        - If you understand what is going on, you can look past the
+                          ugly
+                    </section>
+                </section>
 
-				<section> <!-- What / Why -->
-					<section data-markdown>
-						## Version Control 101
-					</section>
-					<section data-markdown>
-						### What is a VCS?
-						* Software to manage different versions of files
-						* Typically (but not necessarily) source code
-					</section>
-					<section>
-						<div data-markdown>
-							### What does a VCS do?
-						</div>
-						<div data-markdown class="fragment">
-						Mechanically...
+                <section> <!-- What / Why -->
+                    <section data-markdown>
+                        ## Version Control 101
+                    </section>
+                    <section data-markdown>
+                        ### What is a VCS?
+                        * Software to manage different versions of files
+                        * Typically (but not necessarily) source code
+                    </section>
+                    <section>
+                        <div data-markdown>
+                            ### What does a VCS do?
+                        </div>
+                        <div data-markdown class="fragment">
+                        Mechanically...
 
-						* Ordered sequence of *snapshots*
-						* Ordered sequence of *differences*
-						</div>
-						<div data-markdown class="fragment">
-						---
-						Conceptually...
+                        * Ordered sequence of *snapshots*
+                        * Ordered sequence of *differences*
+                        </div>
+                        <div data-markdown class="fragment">
+                        ---
+                        Conceptually...
 
-						* Track changes to your projects
-						* Figure out when bugs were introduced
-						* Understand the reasoning behind some code
-						* Revert changes
-						* Attribution for work done
-						</div>
-						<aside data-markdown class="notes">
-						* You are working with other people who use it
-						* You want to maintain multiple versions of the same thing
-						* You need to coordinate changes across multiple files
-						</aside>
-					</section>
-					<section>
-						<div data-markdown>
-						### Why use a VCS?
-						</div>
-						<div data-markdown class="fragment">
-						* You want to **organise** your changes
-						* You want to **undo** (or **redo**) your changes
-						* You want to **share** your changes
-						* You want to know **how** something changed
-						* You want to know **why** something changed
-						* You are sick of keeping *.bak files around
-						</div>
-						<div data-markdown class="fragment">
-						---
-						* Bring **order** and **visibility** to a changing project
-						</div>
-					</section>
-					<section data-markdown>
-						### What other options are there?
-						* RCS
-						* CVS
-						* Subversion
-						* Darcs
-						* Perforce
-						* GNU Bazaar (`bzr`)
-						* And more...
-					</section>
-					<section data-markdown>
-						<div data-markdown>
-						### Why Git?
-						</div>
-						<div data-markdown class="fragment">
-						* It's fast
-						* You can work without a network connection
-						* It makes working with branches easy
-						* It allows for many different workflows
-						* It protects your data
-						* Once you master the concepts, you can do some really creative (and useful) stuff
-						* The cool kids use it
-						</div>
-					</section>
-				</section>
+                        * Track changes to your projects
+                        * Figure out when bugs were introduced
+                        * Understand the reasoning behind some code
+                        * Revert changes
+                        * Attribution for work done
+                        </div>
+                        <aside data-markdown class="notes">
+                        * You are working with other people who use it
+                        * You want to maintain multiple versions of the same thing
+                        * You need to coordinate changes across multiple files
+                        </aside>
+                    </section>
+                    <section>
+                        <div data-markdown>
+                        ### Why use a VCS?
+                        </div>
+                        <div data-markdown class="fragment">
+                        * You want to **organise** your changes
+                        * You want to **undo** (or **redo**) your changes
+                        * You want to **share** your changes
+                        * You want to know **how** something changed
+                        * You want to know **why** something changed
+                        * You are sick of keeping *.bak files around
+                        </div>
+                        <div data-markdown class="fragment">
+                        ---
+                        * Bring **order** and **visibility** to a changing project
+                        </div>
+                    </section>
+                    <section data-markdown>
+                        ### What other options are there?
+                        * RCS
+                        * CVS
+                        * Subversion
+                        * Darcs
+                        * Perforce
+                        * GNU Bazaar (`bzr`)
+                        * And more...
+                    </section>
+                    <section data-markdown>
+                        <div data-markdown>
+                        ### Why Git?
+                        </div>
+                        <div data-markdown class="fragment">
+                        * It's fast
+                        * You can work without a network connection
+                        * It makes working with branches easy
+                        * It allows for many different workflows
+                        * It protects your data
+                        * Once you master the concepts, you can do some really creative (and useful) stuff
+                        * The cool kids use it
+                        </div>
+                    </section>
+                </section>
 
-				<section> <!-- Installing -->
-					<section data-markdown>
-						## Installation
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Installing on Ubuntu Linux
-						```bash
-						# Required
-						$ sudo aptitude install git
+                <section> <!-- Installing -->
+                    <section data-markdown>
+                        ## Installation
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Installing on Ubuntu Linux
+                        ```bash
+                        # Required
+                        $ sudo aptitude install git
 
-						# Recommended
-						$ sudo aptitude install gitk git-gui
-						```
-						Note:
-						Pause here to explain the way we are showing commands
+                        # Recommended
+                        $ sudo aptitude install gitk git-gui
+                        ```
+                        Note:
+                        Pause here to explain the way we are showing commands
 
-						* talk about '$' as the prompt, etc
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Installing manually (other OSes)
-						* Go to [git-scm.com](http://git-scm.com "The home of git")
-						  * Find the [Download link](http://git-scm.com/downloads "install instructions")
-						  * Follow the instructions for your OS
-						* For Windows:
-						 * When installing the package, it will ask some questions.
-						   Just take the defaults
-						 * Once you have it installed, we need to find "Git BASH" on
-						   your start menu.
-					</section>
-				</section>
+                        * talk about '$' as the prompt, etc
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Installing manually (other OSes)
+                        * Go to [git-scm.com](http://git-scm.com "The home of git")
+                          * Find the [Download link](http://git-scm.com/downloads "install instructions")
+                          * Follow the instructions for your OS
+                        * For Windows:
+                         * When installing the package, it will ask some questions.
+                           Just take the defaults
+                         * Once you have it installed, we need to find "Git BASH" on
+                           your start menu.
+                    </section>
+                </section>
 
-				<section> <!-- Init -->
-					<section data-markdown>
-						 ## Getting Started
-					</section>
-					<section data-markdown>
-						### Create a new repository
-						'```git init```'
-						```bash
-						$ mkdir /tmp/test
-						$ cd /tmp/test
-						```
-						```bash
-						$ git init
-						Initialized empty Git repository in .git/
-						```
-						Check the status with '```git status```'
-						```bash
-						$ git status
-						# On branch master
-						#
-						# Initial commit
-						#
-						nothing to commit (create/copy files and use "git add" to track)
-						```
-					</section>
-					<section data-markdown>
-						### What did that do?
-						Mechanically...
+                <section> <!-- Init -->
+                    <section data-markdown>
+                         ## Getting Started
+                    </section>
+                    <section data-markdown>
+                        ### Create a new repository
+                        '```git init```'
+                        ```bash
+                        $ mkdir /tmp/test
+                        $ cd /tmp/test
+                        ```
+                        ```bash
+                        $ git init
+                        Initialized empty Git repository in .git/
+                        ```
+                        Check the status with '```git status```'
+                        ```bash
+                        $ git status
+                        # On branch master
+                        #
+                        # Initial commit
+                        #
+                        nothing to commit (create/copy files and use "git add" to track)
+                        ```
+                    </section>
+                    <section data-markdown>
+                        ### What did that do?
+                        Mechanically...
 
-						```bash
-						$ ls -a
-						.git
-						```
+                        ```bash
+                        $ ls -a
+                        .git
+                        ```
 
-						```bash
-						$ ls -a .git
-						branches
-						config
-						description
-						HEAD
-						hooks
-						info
-						objects
-						refs
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### What did that do?
-						Conceptually...
+                        ```bash
+                        $ ls -a .git
+                        branches
+                        config
+                        description
+                        HEAD
+                        hooks
+                        info
+                        objects
+                        refs
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### What did that do?
+                        Conceptually...
 
-						![overview](images/local-remote-small.png "overview")
+                        ![overview](images/local-remote-small.png "overview")
 
-						Note:
-						* Working directory: where your current code lives
-						* Staging area: code that you've prepared to commit
-						* Local repo: code that you've bundled into a commit
-						* Remote repo: code that you've pushed to a server
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Getting help
-						```bash
-						# git help COMMAND
-						$ git help status
+                        Note:
+                        * Working directory: where your current code lives
+                        * Staging area: code that you've prepared to commit
+                        * Local repo: code that you've bundled into a commit
+                        * Remote repo: code that you've pushed to a server
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Getting help
+                        ```bash
+                        # git help COMMAND
+                        $ git help status
 
-						# man git-COMMAND
-						$ man git-status
-						```
-						Check https://git-scm.com/doc for online manual.
-						Note:
-						The COMMANDs we have used so far are 'init' and 'status', so....
-					</section>
-				</section>
+                        # man git-COMMAND
+                        $ man git-status
+                        ```
+                        Check https://git-scm.com/doc for online manual.
+                        Note:
+                        The COMMANDs we have used so far are 'init' and 'status', so....
+                    </section>
+                </section>
 
-				<section> <!-- Configuring -->
-					<section data-markdown>
-						 ## Configuring Git
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Global configuration settings
-						Before we start...
-						```bash
-						# We need to tell git who you are - but it's OK to lie for training purposes
-						$ git config --global user.name "Jed I. Night"
-						$ git config --global user.email "null@catalyst.net.nz"
-						```
-						```bash
-						# Choose an editor.... (this is not your IDE)
-						$ git config --global core.editor gedit
-						$ git config --global core.editor wordpad
-						$ git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-						$ git config --global core.editor "code --wait"
-						```
-						```bash
-						# If you will be working on Windows, but need to deal with Unix/MacOS
-						$ git help config
-						$ git config --global core.autocrlf true
-						```
-						Note:
-						Is anyone using Windows? you can't use gedit, and you don't
-						want to use notepad, try:
+                <section> <!-- Configuring -->
+                    <section data-markdown>
+                         ## Configuring Git
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Global configuration settings
+                        Before we start...
+                        ```bash
+                        # We need to tell git who you are - but it's OK to lie for training purposes
+                        $ git config --global user.name "Jed I. Night"
+                        $ git config --global user.email "null@catalyst.net.nz"
+                        ```
+                        ```bash
+                        # Choose an editor.... (this is not your IDE)
+                        $ git config --global core.editor gedit
+                        $ git config --global core.editor wordpad
+                        $ git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+                        $ git config --global core.editor "code --wait"
+                        ```
+                        ```bash
+                        # If you will be working on Windows, but need to deal with Unix/MacOS
+                        $ git help config
+                        $ git config --global core.autocrlf true
+                        ```
+                        Note:
+                        Is anyone using Windows? you can't use gedit, and you don't
+                        want to use notepad, try:
 
-						- Notepad++
-						- Wordpad
-						- ANYTHING else!
+                        - Notepad++
+                        - Wordpad
+                        - ANYTHING else!
 
-						- but only within the current repository (which is `/tmp/test`)
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Project configuration settings
-						This will tell Git you like to see pretty colours on the screen
-						```bash
-						$ git config color.ui auto
-						```
-						Note:
-						- These settings will override the global settings
-						- Depending on your version of Git, this command is probably just choosing the default
+                        - but only within the current repository (which is `/tmp/test`)
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Project configuration settings
+                        This will tell Git you like to see pretty colours on the screen
+                        ```bash
+                        $ git config color.ui auto
+                        ```
+                        Note:
+                        - These settings will override the global settings
+                        - Depending on your version of Git, this command is probably just choosing the default
 
-						- but only within the current repository (which is /tmp/test)
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Accessing the configuration settings
+                        - but only within the current repository (which is /tmp/test)
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Accessing the configuration settings
 
-						```bash
-						# Use `git config` to see it
-						$ git config -l
-						$ git config --global -l
-						$ git config --local -l
-						```
-						```bash
-						# Or just edit the files:
-						# -> Global data is stored in "~/.gitconfig"
-						$ gedit ~/.gitconfig
+                        ```bash
+                        # Use `git config` to see it
+                        $ git config -l
+                        $ git config --global -l
+                        $ git config --local -l
+                        ```
+                        ```bash
+                        # Or just edit the files:
+                        # -> Global data is stored in "~/.gitconfig"
+                        $ gedit ~/.gitconfig
 
-						# -> Project data is stored in "/tmp/test/.git/config"
-						$ gedit /tmp/test/.git/config
-						```
-					</section>
-				</section>
+                        # -> Project data is stored in "/tmp/test/.git/config"
+                        $ gedit /tmp/test/.git/config
+                        ```
+                    </section>
+                </section>
 
-				<section> <!-- Basic use ... -->
-					<section data-markdown>
-						## Managing Files
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Managing Files
-						Make some changes...
-						```bash
-						$ touch myscript.pl
-						```
-						```bash
-						$ git status
-						# On branch master
-						#
-						# Initial commit
-						#
-						# Untracked files:
-						#   (use "git add &lt;file>..." to include in what will be committed)
-						#
-						#	myscript.pl
-						nothing added to commit but untracked files present (use "git add" to track)
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Tell Git to track those files
-						'```git add```'
-						```bash
-						$ git add myscript.pl
-						```
-						```bash
-						$ git status
-						# On branch master
-						#
-						# Initial commit
-						#
-						# Changes to be committed:
-						#   (use "git rm --cached &lt;file>..." to unstage)
-						#
-						#	new file: myscript.pl
-						#
-						```
-						Note:
-						This actually adds the file to the 'index'
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Change an existing file
-						Make some changes...
-						```bash
-						$ echo DATA > myscript.pl
-						```
-						```bash
-						$ git status
-						# On branch master
-						#
-						# Initial commit
-						#
-						# Changes to be committed:
-						#   (use "git rm --cached &lt;file>..." to unstage)
-						#
-						#	new file:   myscript.pl
-						#
-						# Changed but not updated:
-						#   (use "git add &lt;file>..." to update what will be committed)
-						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
-						#
-						#	modified:   myscript.pl
-						#
-						```
-						Note:
-						This is our first clue that Git tracks changes rather than files
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### See what you have done
-						```git diff```
-						```bash
-						$ git diff
-						--- a/myscript.pl
-						+++ b/myscript.pl
-						@@ -0,0 +1 @@
-						+DATA
-						```
-						Note:
-						- Please feel free to run commands like 'git diff'
+                <section> <!-- Basic use ... -->
+                    <section data-markdown>
+                        ## Managing Files
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Managing Files
+                        Make some changes...
+                        ```bash
+                        $ touch myscript.pl
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        #
+                        # Initial commit
+                        #
+                        # Untracked files:
+                        #   (use "git add &lt;file>..." to include in what will be committed)
+                        #
+                        #    myscript.pl
+                        nothing added to commit but untracked files present (use "git add" to track)
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Tell Git to track those files
+                        '```git add```'
+                        ```bash
+                        $ git add myscript.pl
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        #
+                        # Initial commit
+                        #
+                        # Changes to be committed:
+                        #   (use "git rm --cached &lt;file>..." to unstage)
+                        #
+                        #    new file: myscript.pl
+                        #
+                        ```
+                        Note:
+                        This actually adds the file to the 'index'
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Change an existing file
+                        Make some changes...
+                        ```bash
+                        $ echo DATA > myscript.pl
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        #
+                        # Initial commit
+                        #
+                        # Changes to be committed:
+                        #   (use "git rm --cached &lt;file>..." to unstage)
+                        #
+                        #    new file:   myscript.pl
+                        #
+                        # Changed but not updated:
+                        #   (use "git add &lt;file>..." to update what will be committed)
+                        #   (use "git checkout -- &lt;file>..." to discard changes in working directory)
+                        #
+                        #    modified:   myscript.pl
+                        #
+                        ```
+                        Note:
+                        This is our first clue that Git tracks changes rather than files
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### See what you have done
+                        ```git diff```
+                        ```bash
+                        $ git diff
+                        --- a/myscript.pl
+                        +++ b/myscript.pl
+                        @@ -0,0 +1 @@
+                        +DATA
+                        ```
+                        Note:
+                        - Please feel free to run commands like 'git diff'
 
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Change an existing file
-						We need to tell Git that you intend to commit the checked out
-						version, with ```git add```
-						```bash
-						$ git add myscript.pl
-						```
-						```bash
-						$ git status
-						# On branch master
-						#
-						# Initial commit
-						#
-						# Changes to be committed:
-						#   (use "git rm --cached &lt;file>..." to unstage)
-						#
-						#	new file:   myscript.pl
-						#
-						```
-						Note:
-						- This use of 'git add' SEEMS different to before, but it's really
-						  just saying 'This is my proposed next commit'
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Committing changes
-						Commit your work with ```git commit```
-						```bash
-						# You will be stuck in an editor so you can input a commit message.
-						# Normally, you WILL make your commit message meaningful!
-						$ git commit
-						Created commit ae54011: Add a message.
-						1 files changed, 3 insertions(+), 0 deletions(-)
-						create mode 100644 myscript.pl
-						```
-						We'll pause here to make sure everyone has this working...
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Change an existing file
+                        We need to tell Git that you intend to commit the checked out
+                        version, with ```git add```
+                        ```bash
+                        $ git add myscript.pl
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        #
+                        # Initial commit
+                        #
+                        # Changes to be committed:
+                        #   (use "git rm --cached &lt;file>..." to unstage)
+                        #
+                        #    new file:   myscript.pl
+                        #
+                        ```
+                        Note:
+                        - This use of 'git add' SEEMS different to before, but it's really
+                          just saying 'This is my proposed next commit'
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Committing changes
+                        Commit your work with ```git commit```
+                        ```bash
+                        # You will be stuck in an editor so you can input a commit message.
+                        # Normally, you WILL make your commit message meaningful!
+                        $ git commit
+                        Created commit ae54011: Add a message.
+                        1 files changed, 3 insertions(+), 0 deletions(-)
+                        create mode 100644 myscript.pl
+                        ```
+                        We'll pause here to make sure everyone has this working...
 
-						Note:
-						Check if everyone got a reasonable editor!
+                        Note:
+                        Check if everyone got a reasonable editor!
 
-						Problems can be resolved by
+                        Problems can be resolved by
 
-						- adding to your PATH var (and restarting git bash)
-						- defining an alias in your ~/.bashrc
-						```bash
-						  alias notepad="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
-						```
-						- additional config
-						```bash
-						git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-						```
+                        - adding to your PATH var (and restarting git bash)
+                        - defining an alias in your ~/.bashrc
+                        ```bash
+                          alias notepad="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
+                        ```
+                        - additional config
+                        ```bash
+                        git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+                        ```
 
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Committing changes - some options
-						You don't have to '```git add```' all your changes manually
-						```bash
-						# Add FILE, and then commit
-						$ git commit FILE
-						```
-						```bash
-						# Add all your changes, and then commit
-						$ git commit -a
-						```
-						```bash
-						# You can choose different editor for this commit...
-						$ GIT_EDITOR=vim git commit -a
-						```
-						```bash
-						# You don't have to use an editor at all...
-						$ git commit -m 'commit message goes here'
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Managing Files - Permissions
-						Oops, that file isn't executable
-						```bash
-						$ chmod 755 myscript.pl
-						```
-						```bash
-						$ git commit myscript.pl
-						Created commit 378af93: Make it executable.
-						0 files changed, 0 insertions(+), 0 deletions(-)
-						mode change 100644 => 100755 myscript.pl
-						```
-						Note:
-						Windows file permissions don't map neatly into git,
-						So unless they're also sharing files with Linux or Macs,
-						you can pretty much ignore this part.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Managing Files - Move
-						To rename a file use '```git mv```'
-						```bash
-						$ git mv myscript.pl README.txt
-						```
-						```bash
-						$ git status
-						# On branch master
-						# Changes to be committed:
-						#   (use "git reset HEAD &lt;file>..." to unstage)
-						#
-						#	renamed: myscript.pl -> README.txt
-						#
-						```
-						```bash
-						# This has changed our checkout, and the index
-						# so we are ready to commit the change
-						$ git commit
-						Created commit fabd446: Rename the file.
-						1 files changed, 0 insertions(+), 0 deletions(-)
-						rename myscript.pl => README.txt (100%)
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Managing Files - Delete
-						To delete a file use '```git rm```'
-						```bash
-						# This won't actually work, because we haven't
-						# created "another-script.pl"
-						# ... but you can try it, if you like....
-						$ git rm -f another-script.pl
-						```
-						```bash
-						$ git status
-						# On branch master
-						# Changes to be committed:
-						#   (use "git reset HEAD &lt;file>..." to unstage)
-						#
-						#	deleted: another-script.pl
-						#
-						```
-						And commit the change
-						```bash
-						$ git commit
-						Created commit bd10c5f: Remove another-script.pl
-						0 files changed, 0 insertions(+), 0 deletions(-)
-						delete mode 100644 another-script.pl
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Managing Files - ignore them
-						```bash
-						# Let's imagine your editor keeps creating '.swp' files
-						$ touch README.txt.swp
-						```
-						```bash
-						$ git status
-						# On branch master
-						# Untracked files:
-						#   (use "git add &lt;file>..." to include in what will be committed)
-						#
-						#       README.txt.swp
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Managing Files - ignore them
-						```bash
-						# Add a line that contains '*.swp'
-						$ gedit .gitignore
-						```
-						```bash
-						$ git status
-						# On branch master
-						# Untracked files:
-						#   (use "git add &lt;file>..." to include in what will be committed)
-						#
-						#       .gitignore
-						```
-						```bash
-						# We can then commit the .gitignore file
-						$ git add .gitignore
-						$ git commit -m 'Created a .gitignore file'
-						```
-						Note:
-						You can put a different .gitignore file in each directory
-						...or stick to one in the root of your project
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Ignoring files Privately vs. Publicly
-						* Adding things to .gitignore makes it part of your project...
-						* Instead *you* can ignore things using .git/info/exclude.
-					</section>
-				</section>
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Committing changes - some options
+                        You don't have to '```git add```' all your changes manually
+                        ```bash
+                        # Add FILE, and then commit
+                        $ git commit FILE
+                        ```
+                        ```bash
+                        # Add all your changes, and then commit
+                        $ git commit -a
+                        ```
+                        ```bash
+                        # You can choose different editor for this commit...
+                        $ GIT_EDITOR=vim git commit -a
+                        ```
+                        ```bash
+                        # You don't have to use an editor at all...
+                        $ git commit -m 'commit message goes here'
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Managing Files - Permissions
+                        Oops, that file isn't executable
+                        ```bash
+                        $ chmod 755 myscript.pl
+                        ```
+                        ```bash
+                        $ git commit myscript.pl
+                        Created commit 378af93: Make it executable.
+                        0 files changed, 0 insertions(+), 0 deletions(-)
+                        mode change 100644 => 100755 myscript.pl
+                        ```
+                        Note:
+                        Windows file permissions don't map neatly into git,
+                        So unless they're also sharing files with Linux or Macs,
+                        you can pretty much ignore this part.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Managing Files - Move
+                        To rename a file use '```git mv```'
+                        ```bash
+                        $ git mv myscript.pl README.txt
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        # Changes to be committed:
+                        #   (use "git reset HEAD &lt;file>..." to unstage)
+                        #
+                        #    renamed: myscript.pl -> README.txt
+                        #
+                        ```
+                        ```bash
+                        # This has changed our checkout, and the index
+                        # so we are ready to commit the change
+                        $ git commit
+                        Created commit fabd446: Rename the file.
+                        1 files changed, 0 insertions(+), 0 deletions(-)
+                        rename myscript.pl => README.txt (100%)
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Managing Files - Delete
+                        To delete a file use '```git rm```'
+                        ```bash
+                        # This won't actually work, because we haven't
+                        # created "another-script.pl"
+                        # ... but you can try it, if you like....
+                        $ git rm -f another-script.pl
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        # Changes to be committed:
+                        #   (use "git reset HEAD &lt;file>..." to unstage)
+                        #
+                        #    deleted: another-script.pl
+                        #
+                        ```
+                        And commit the change
+                        ```bash
+                        $ git commit
+                        Created commit bd10c5f: Remove another-script.pl
+                        0 files changed, 0 insertions(+), 0 deletions(-)
+                        delete mode 100644 another-script.pl
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Managing Files - ignore them
+                        ```bash
+                        # Let's imagine your editor keeps creating '.swp' files
+                        $ touch README.txt.swp
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        # Untracked files:
+                        #   (use "git add &lt;file>..." to include in what will be committed)
+                        #
+                        #       README.txt.swp
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Managing Files - ignore them
+                        ```bash
+                        # Add a line that contains '*.swp'
+                        $ gedit .gitignore
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        # Untracked files:
+                        #   (use "git add &lt;file>..." to include in what will be committed)
+                        #
+                        #       .gitignore
+                        ```
+                        ```bash
+                        # We can then commit the .gitignore file
+                        $ git add .gitignore
+                        $ git commit -m 'Created a .gitignore file'
+                        ```
+                        Note:
+                        You can put a different .gitignore file in each directory
+                        ...or stick to one in the root of your project
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Ignoring files Privately vs. Publicly
+                        * Adding things to .gitignore makes it part of your project...
+                        * Instead *you* can ignore things using .git/info/exclude.
+                    </section>
+                </section>
 
-				<section> <!-- Viewing changes ... -->
-					<section data-markdown>
-						## Change Logs
-					</section>
+                <section> <!-- Viewing changes ... -->
+                    <section data-markdown>
+                        ## Change Logs
+                    </section>
           <section data-markdown data-separator-notes="^Note:">
-						### Change Logs
-						Use `git log`
-						```bash
-						$ git log
-						commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
-						Author: Evan Giles <evan@catalyst.net.nz>
-						Date:   Thu Dec 16 11:53:48 2010 +1300
-
-							Rename the file.
-
-						commit f7123c5ffdccbed11b50b0b74a181186e1a13028
-						Author: Evan Giles <evan@catalyst.net.nz>
-						Date:   Thu Dec 16 11:53:25 2010 +1300
-
-							Make it executable
-
-						commit 8657bea3230587abdcbe39e6bf699c9ee8f505a6
-						Author: Evan Giles <evan@catalyst.net.nz>
-						Date:   Thu Dec 16 11:52:51 2010 +1300
-
-							Add a message.
-						```
-						By default the output is piped into $PAGER
-						Note:
-						If $PAGER is not set, defaults to using `less`.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Change Logs
-						```bash
-						# You can change the output format
-						$ git log --pretty=oneline
-						```
-						```bash
-						# Or specify which file or directory you are interested in
-						$ git log README.txt
-						```
-						```bash
-						# There are lots of options..
-						$ git log --pretty=oneline --since='5 minutes ago' --graph
-						```
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Change Logs - Blame
-						Show who made changes to what line
-
-						```bash
-						$ git blame filename.pl
-						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2)
-						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
-						9c08faf4 (Bad Coder   2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
-						```
-						Note:
-						Note the short versions of the commit hashes, so you can check in the logs for commit messages, etc.
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Change logs - GUI
-						Visualising your logs:  `gitk` / `qgit` / `gitg` / etc.
-						![image](images/gitk.png "gitk")
-						Note:
-						For something like VSCode, the 'Git Branch' extension will give you a similar view.
-					</section>
-				</section>
-
-				<section> <!-- Concepts 2 ... -->
-					<section data-markdown>
-						## More on Commits
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Commit Concepts
-						* A commit is git's fundamental building block
-						* Each commit refers to a previous commit (its parent)
-						* Commits can be referenced by their SHA1 checksum
-							* or an abbreviation of it
-							* or by a number of things that might refer to them (e.g. tags)
-						* ```gitk``` and other tools can help you to visualise the commit history
-					</section>
-					<section data-markdown>
-						### Commits are...
-
-						## Totally Unchangeable!
-						<aside class="notes">
-						So once you have committed your work, it is really safe in the repo.
-						</aside>
-					</section>
-				</section>
-
-				<section> <!-- branching and merging -->
-					<section data-markdown>
-						## Branches
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Branching - List
-						To show branches, use '```git branch```'.
-						```bash
-						$ git branch
-						* master
-						```
-						Only one branch, called ```master```.
-
-						The '*' indicates that it is your current branch.
-						Note:
-						You can also use 'git status'.
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Branching - Create
-						```bash
-						# Create a new branch
-						$ git branch feature1
-						```
-						```bash
-						$ git branch
-						* master
-						  feature1
-						```
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Branching - Create somewhere else
-						By default a new branch will be created at the commit you
-						already have checked out
-
-						You can also create a new branch at another commit
-						```bash
-						$ git branch feature2 feature1
-						```
-						```bash
-						$ git branch
-						  feature2
-						* master
-						  feature1
-						```
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Branching - Change branch
-						Use ```git checkout```
-						```bash
-						$ git checkout feature1
-						Switched to branch "feature1"
-						```
-						```bash
-						$ git branch
-						  feature2
-						  master
-						* feature1
-						```
-						Note:
-						- Don't forget to see how this is shown in ```gitk```
-						- Most people use `git checkout -b` to create branches
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Branching - What's the deal?
-						```bash
-						# Make a change to a file (and commit that change)
-						$ echo "... From feature1" >> README.txt
-						$ git commit README.txt
-						Created commit a6ed2cf: From feature1
-						1 files changed, 1 insertions(+), 0 deletions(-)
-						```
-						```bash
-						# Check the file..
-						$ cat README.txt
-						DATA
-						... From feature1
-						```
-						```bash
-						# Switch to a different branch (master)
-						$ git checkout master
-						Switched to branch "master"
-						```
-						```bash
-						# The text we added ain't there
-						$ cat README.txt
-						DATA
-						```
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Branching - Why?
-						* Many (most) projects have a branch for each release
-						* Branches are useful for experimental features / refactoring
-						* Branches happen (without even trying) when several people try
-						  to work on the same project - but I'll explain that soon ;)
-
-						Note:
-						It is useful to think of branches as an 'alternative reality'
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Merging - Simple Case
-						```bash
-						# You should now be on the 'master' branch
-						$ git status
-						# On branch master
-						nothing to commit (working directory clean)
-						```
-						Use ```git merge```
-						```bash
-						$ git merge feature1
-						Updating e766bfb..a6ed2cf
-						Fast forward
-						README.txt |	1 +
-						1 files changed, 1 insertions(+), 0 deletions(-)
-						```
-						If there are no conflicts, this may make a new commit object,
-						but in this case, we have done a ```fast forward``` merge
-
-						Note:
-						- We are merging changes *IN*, from somewhere else
-						- explain the fast forward bit
-						- talk about merges being line by line, so not for binary data
-						- use ```gitk``` to see what happened
-
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Merging - get ready for a conflict
-						Conflicts are more difficult (lets create one)
-						```bash
-						# Make a change to a file, commit that change to 'master'
-						$ echo "New value for data" > README.txt
-						$ git commit -a -m 'update script with a new value'
-
-						# Change branches, make a change, and commit
-						$ git checkout feature1
-						$ echo "different value for data" > README.txt
-						$ git commit -a -m 'update script with a different value'
-
-						# Go back to the master branch, if we try to merge - there
-						# will be a problem!
-						$ git checkout master
-						```
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Merging - you can't do that
-						If there is a conflict then git will stop and make you fix it.
-						```bash
-						$ git merge feature1
-						Auto-merged README.txt
-						CONFLICT (content): Merge conflict in README.txt
-						Automatic merge failed; fix conflicts and then commit the result.
-						```
-						```bash
-						$ git status
-						# On branch master
-						# Unmerged paths:
-						#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
-						#
-						#	   both modified:	  README.txt
-						#
-						no changes added to commit (use "git add" and/or "git commit -a")
-						```
-						```bash
-						$ cat README.txt
-						<<<<<<< HEAD:README.txt
-						New value for data
-						=======
-						different value for data
-						>>>>>>> feature1:README.txt
-						```
-						Note:
-						  Mention git merge --abort
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Merging - Fixing conflicts
-						Lots of ways to help fix things up: hand-edit, `xxdiff`,
-						`smartmerge`, etc.
-
-						We'll just fix it by editing the file:
-						```bash
-						$ gedit README.txt
-						$ cat README.txt
-						New, different value for data
-						```
-						But Git still won't allow us to continue...
-						```bash
-						$ git commit
-						U	README.txt
-						fatal: 'commit' is not possible because you have unmerged files.
-						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
-						appropriate to mark resolution and make a commit, or use 'git commit -a'.
-						```
-						Note:
-						Git does this to make you be explicit about staging the conflicted files you're resolving. So...
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Merging - Success at last!
-						We need to tell Git that it has been fixed before we commit:
-						```bash
-						$ git add README.txt
-						$ git commit
-						Created commit a411f2a: Merge branch 'feature1'
-						```
-						In this case the commit message is automatically created, but
-						you can edit it if you want.
-						```bash
-						Merge branch 'feature1'
-
-						Conflicts:
-
-							README.txt
-						```
-						Note:
-						- Once again, 'git add' is saying 'this is the proposed next commit'
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Merging - How does it look?
-						Looking at the trees in gitk helps you understand stuff.
-						```bash
-						$ gitk
-						```
-					</section>
-				</section>
-				<section>
-					<section data-markdown>
-						## Tags
-					</section>
-					<section data-markdown>
-						### Tags
-						* Tags allow you to mark specific points (i.e. commits) in history as being important.
-
-						* Often people use this functionality to mark release points.
-
-						```bash
-						# This is a 'lightweight' tag
-						$ git tag v1
-
-						# This is an 'annotated' tag
-						$ git tag v2 -m 'this might be important later!'
-						```
-						```bash
-						# List the existing tags
-						$ git tag
-
-						# Show details of specific tags
-						$ git show v1
-						$ git show v2
-						```
-					</section>
-				</section>
-
-				<section> <!-- Where are we? Where are we going? -->
-					<section data-markdown>
-						## Local vs. Remote Repositories
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						###  Where are we?
-
-						![image](images/local.png "")
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						###  Where are we going?
-
-						![image](images/local-remote.png "")
-						Note:
-						What is the opposite of push? (it's not pull!)
-
-						Recommend "git fetch; git merge" in place of "git pull"
-					</section>
-				</section>
-
-				<section>
-					<section data-markdown>
-						## Remote Repositories
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Creating Repositories - Revisited
-						We already know how to create a new repository...
-						```bash
-						$ git init
-						Initialized empty Git repository in .git/
-						```
-						...but normally, you want to join in with an existing project
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Clone an existing repository
-						In practise, you're more likely to use '```git clone```'.
-
-						To check out the source code of a random project:
-						```bash
-						$ cd /tmp
-						$ git clone https://github.com/cat-train/example1.git
-						Cloning into example1...
-						remote: Counting objects: 90, done.
-						remote: Compressing objects: 100% (43/43), done.
-						remote: Total 90 (delta 44), reused 90 (delta 44)
-						Receiving objects: 100% (90/90), 31.62 KiB, done.
-						Resolving deltas: 100% (44/44), done.
-						$ cd example1
-						$ ls
-						$ gitk
-						```
-						Note:
-						- did you notice the oddly coloured branch called 'remotes/origin/master'?
-						- `git branch -a` to show all branches
-						- `git remote -v` to see all remote repositories
-
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Terminology: Origin
-						You can see all branches (including the remote ones) with the
-						```git branch``` command
-						```bash
-						$ git branch -a
-						* master
-						  remotes/origin/master
-						```
-						Note:
-						- origin is where you cloned from
-						- you don't need to type 'remotes' to refer to these branches
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Terminology: Remote branches
-						* Remote branches are references (pointers) to the state of
-						branches in your remote repositories.
-
-						* They're local branches
-						that you can't move; they're moved automatically for you
-						whenever you do any network communication.
-
-						* Remote branches act
-						as bookmarks to remind you where the branches on your remote
-						repositories were the last time you connected to them.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Remote repositories - URLs
-						```bash
-						# Clone an existing repository via HTTP (you've already done this)
-						$ git clone https://github.com/cat-train/example1.git
-						```
-						```bash
-						# Clone an existing repository via SSH (this won't work for you)
-						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
-						```
-						```bash
-						# Clone an existing local repository (this is only slightly mad)
-						$ git clone test test2
-						```
-					</section>
-				</section>
-
-				<section> <!-- Ways to work -->
-					<section data-markdown>
-						## Distributed Version Control
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Git is a *Distributed* VCS
-						#### Corporate Workflow
-						You will probably use this
-
-						![image](images/workflow-a.png "corporate")
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Git is a *Distributed* VCS
-						#### Integration manager Workflow
-						A quick diversion: http://www.github.com
-
-						![image](images/workflow-b.png "github")
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Git is a *Distributed* VCS
-						#### Dictator Workflow
-						This is how the Linux kernel is managed
-
-						![image](images/workflow-c.png "linux")
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Git is a *Distributed* VCS
-						#### Peer to peer Workflow
-
-						![image](images/workflow-d.png "p2p")
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Git Flow
-						http://nvie.com/posts/a-successful-git-branching-model/
-
-						![image](images/gitflow_1.png "gitflow")
-						Note:
-						- It seems excessive, but it's not a waste of time
-						- origin/master represents prod-ready
-						- develop is generally where things begin
-						- hotfixes, releases, features
-						- merge with '--no-ff'
-						- branches get deleted when you are finished with them
-						- Use of pull requests in stash makes code review, merging easy
-					</section>
-				</section>
-
-				<section> <!-- Alice and Bob -->
-					<section data-markdown>
-						## Collaboration
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						Once upon a time....
-
-						Alice and Bob wanted to do some work
-
-						![image](images/lastthing1.png "")
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						So they both made some changes....
-
-						![image](images/lastthing2.png "")
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						Alice pushes her changes...
-
-						![image](images/lastthing3.png "")
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						But Bob has a problem...
-
-						![image](images/lastthing3a.png "")
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						Now Bob needs to fetch the changes from Alice
-
-						![image](images/lastthing4.png "")
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						and merge them with his work
-
-						![image](images/lastthing5.png "")
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						They all lived happily ever after...
-
-						![image](images/lastthing6.png "")
-						Note:
-						Do exercise here if you have time.
-					</section>
-
-					<section data-markdown data-separator-notes="^Note:">
-						### Now we can try it out
-						```bash
-						# Clone a new repository
-						$ cd /tmp
-						$ git clone https://github.com/git-training-open/alice1.git
-						$ cd /tmp/alice1
-						```
-						```bash
-						# Create a new file (and commit)
-						$ touch $YOURNAME.txt
-						$ git add $YOURNAME.txt
-						$ git commit
-						```
-						```bash
-						# Push your changes to the shared repository
-						# git-training-open / openup1
-						$ git push origin master
-						```
-						```bash
-						# You are now Bob!
-						$ git fetch
-						$ git merge origin/master
-						```
-						Note:
-						Explain What is going on with "origin" and "master" here:
-
-						- git push origin master
-						- git merge origin/master
-
-						Also introduce the idea that commands have defaults:
-
-						- git push &rarr; git push origin master
-					</section>
-				</section>
-
-				<section> <!-- Stuff we have missed ... -->
-					<section data-markdown>
-						## Managing Commits
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Changing your commits
-						You can 'change' the most recent commit using ```git commit```
-						```bash
-						$ git add something.txt
-						$ git commit --amend
-						```
-						This is quite a big deal...
-						Note:
-						Will someone please pull me up on this?!
-
-						Explain how this works
-
-						- That you are not changing anything here
-						- just making a new commit which is quite like the old one
-						- and then moving the labels around
-
-						Warning:
-
-						- Do not change commits that exist outside your repository.
-						- If you do, people will hate you, and you'll be scorned
-						  by friends and family.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Copy a commit
-						* You can copy a single commit *from* one branch *to* another
-
-						* You might want to do this if, for example, a bug is discovered
-						on your development branch that also needs to be applied to your
-						production branch.
-						```bash
-						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
-						```
-						Note:
-						- The commit created will look the same, but have a
-						different commit id.
-
-						- Note that the cherry-pick can fail, if there are conflicts.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Undo a commit
-						You can undo a previous commit with '```git revert```'.
-
-						This makes a new commit, that is the exact opposite of a
-						previous commit in your repository.
-
-						The previous commit remains intact.
-						```bash
-						$ git revert e43a6fd3e94888d76779ad79fb568ed180e5fcdf
-						```
-						```bash
-						$ git log --pretty=oneline
-						830d77273fc24c0708403102a05a5a5ffecfce93 Revert "Introduce bug"
-						d7a1ee454168081227ee82c5f11bb08f77e2643d Unrelated change
-						e43a6fd3e94888d76779ad79fb568ed180e5fcdf Introduce bug
-						```
-						Note:
-						- When you revert the commit, you get dropped into an editor
-						in case you want to can edit the commit message.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Getting serious with copying commits
-						As an alternative to merging, you can use '```git rebase```'.
-
-						Instead of making a new commit which joins two branches together,
-						it copies your changes on top of the other branch...
-
-						You use it just like a merge.
-						```bash
-						$ git rebase origin/master
-						```
-						Note:
-						Draw what this does, contrast it with a merge
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Rebase vs. Merge?
-						> One point of view on this is that your repository's commit
-						> history is a record of what actually happened. It's a historical
-						> document, valuable in its own right, and shouldn't be tampered
-						> with. From this angle, changing the commit history is almost
-						> blasphemous; you're lying about what actually transpired. So
-						> what if there was a messy series of merge commits? That's how
-						> it happened, and the repository should preserve that for
-						> posterity.
-
-						Note:
-						- History is an audit trail
-						- From _Pro Git_, by Chacon and Straub
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Rebase vs. Merge
-						> The opposing point of view is that the commit history is the
-						> story of how your project was made. You wouldn't publish the
-						> first draft of a book, and the manual for how to maintain your
-						> software deserves careful editing. This is the camp that uses
-						> tools like rebase and filter-branch to tell the story in the
-						> way that's best for future readers.
-						Note:
-						- History is a story
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### The Perils of Rebasing
-						> Ahh, but the bliss of rebasing isn’t without its drawbacks,
-						> which can be summed up in a single line:
-						> **Do not rebase commits that exist outside your repository.**
-						> If you follow that guideline, you’ll be fine. If you don’t,
-						> people will hate you, and you’ll be scorned by friends and family.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### The Perils of Rebasing
-						> When you rebase stuff, you’re abandoning existing commits and
-						> creating new ones that are similar but different. If you push
-						> commits somewhere and others pull them down and base work on
-						> them, and then you rewrite those commits with git rebase and
-						> push them up again, your collaborators will have to re-merge
-						> their work and things will get messy when you try to pull their
-						> work back into yours.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### A more advanced rebase
-						```bash
-						$ git rebase --interactive origin/master
-						```
-						```bash
-						pick a3895fe Try a bit harder to return a useful value from all methods
-						pick 180e665 Release engineering (0.8)
-						pick 2a6d832 Update Build.PL for newer build tools
-						pick e1fac16 Use semantic versioning (http://semver.org/)
-
-						# Rebase aa8a695..e1fac16 onto aa8a695
-						#
-						# Commands:
-						#  p, pick = use commit
-						#  r, reword = use commit, but edit the commit message
-						#  e, edit = use commit, but stop for amending
-						#  s, squash = use commit, but meld into previous commit
-						#  f, fixup = like "squash", but discard this commit's log message
-						#  x, exec = run command (the rest of the line) using shell
-						#
-						# These lines can be re-ordered; they are executed from top to bottom.
-						#
-						# If you remove a line here THAT COMMIT WILL BE LOST.
-						# However, if you remove everything, the rebase will be aborted.
-						#
-						```
-					</section>
-				</section>
-
-				<section> <!-- Wrap up -->
-					<section data-markdown>
-						## Loose Ends
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Loose ends...
-						#### git reset (simple)
-						If you provide a filename, it is the opposite of '```git add```'
-						```bash
-						# This will overwrite the index with whatever is in the
-						# latest commit
-						$ git reset README.txt
-						```
-						Note:
-						- `git status` has been telling us about this all along....
-					</section>
-					<section>
-					<div data-markdown>
-						### Loose ends...
-						#### git reset (interesting)
-						If you don't provide a filename, it allows you to play with your
-						'trees'
-						```bash
-						# Move your current branch to the previous commit
-						$ git reset --soft HEAD^
-						```
-						Note:
-						Trees?
-
-						- HEAD:last commit, parent for next commit
-						- index: proposed next commit
-						- working directory: sandbox
-					</div>
-					<div data-markdown class="fragment">
-						```bash
-						# Move your current branch to the previous commit,
-						# AND reset the index to match that commit
-						$ git reset --mixed HEAD^
-						```
-					</div>
-					<div data-markdown class="fragment">
-						```bash
-						# Move your current branch to the previous commit,
-						# AND reset the index to match that commit
-						# AND reset your working tree to match that commit
-						$ git reset --hard HEAD^
-						```
-					</div>
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Loose ends...
-						#### git stash (hide)
-						You can hide your changes away for later use
-						```bash
-						$ git status
-						# On branch master
-						#
-						#	modified:   myscript.pl
-
-						$ git stash
-						Saved working directory and index state WIP on master: 5cc4a26 added a file
-						```
-						```bash
-						$ git status
-						# On branch master
-						nothing to commit (working directory clean)
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Loose ends...
-						#### git stash (restore)
-						Later on, you can restore your changes
-						```bash
-						$ git status
-						# On branch master
-						nothing to commit (working directory clean)
-
-						$ git stash pop
-						# On branch master
-						#
-						# Changes not staged for commit:
-						#   (use "git add &lt;file>..." to update what will be committed)
-						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
-						#
-						#       modified:   myscript.pl
-						no changes added to commit (use "git add" and/or "git commit -a")
-						Dropped refs/stash@{0} (1a69a03f554a61ea50b3a9e2eb1182608cb50c8e)
-						```
-						Note:
-						You can manage multiple stashes if you want....but that gets confusing :(
-					</section>
-
-					<section>
-						<div data-markdown>
-							###  The End
-							####  Questions?
-						</div>
-						<div class="fragment">
-						<div data-markdown>
-							The official Git site &rarr; http://git-scm.com/about
-
-							Data Assurance &rarr; http://git-scm.com/about/info-assurance
-
-							Cheat sheet &rarr; http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf
-
-							Github &rarr; http://github.com
-
-							---------------------
-						</div>
-						<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small><br>
-
-						<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-						</div>
-						<aside class="notes">
-							Thing to discuss to fill in time<br>
-							- git add/commit -p<br>
-							- git reflog<br>
-							- git bisect<br>
-						</aside>
-					</section>
-				</section>
-
-				<section> <!-- Examples -->
-					<section data-markdown>
-						## Exercises
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 1
-						#### Fix a production bug
-						We have just discovered that there is a program in production that
-						is not executable - the site is down!
-
-						But we can't deploy the latest code because it's not ready...
-
-						Please find the release tag 'release-1-0' in the repository
-						'https://github.com/cat-train/example1.git', and fix the bug!
-						Note:
-						Note that these problems are NOT a test - you haven't been given
-						enough information yet
-
-						It is just some everyday problems that we can work through
-						together...
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 1
-						#### Solution
-						```bash
-						# Clone the repository
-						$ cd /tmp
-						$ git clone https://github.com/cat-train/example1.git
-						$ cd /tmp/example1
-
-						# Make a new branch (at the point we want to change)
-						$ git checkout -b release-1 release-1-0
-
-						# Fix the problem
-						$ chmod +x program
-						$ git commit -a -m 'make the program executable'
-						$ # git push origin release-1
-						```
-						Note:
-						Discuss
-						* The fact that we can't push to that URL
-						* And even if we could, we can't push to the master branch
-						* What would we normally do next (cherry-pick / merge),
-						  probably not rebase
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 2
-						####	Change the past
-						I have just noticed that
-						https://github.com/cat-train/example2.git has a dodgey
-						commit.  The commit message is 'Oooh, this smells a bit
-						funny...'.
-
-						Please make it go away
-						Note:
-						Once again, you won't be able to push your changes - but that's
-						ok.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 2
-						####	Solution
-						```bash
-						# Clone the repository
-						$ cd /tmp
-						$ git clone https://github.com/cat-train/example2.git
-						$ cd /tmp/example2
-						```
-						```bash
-						# Work out what we want to do
-						$ git log --oneline
-						5c90449 Remove the README file
-						3bec061 Some more stuff
-						3114205 Oooh, this smells a bit funny...
-						510043a Another list - snakes
-						6a624b3 Add a list of lists
-						```
-						```bash
-						# Rewrite the past
-						$ git rebase --interactive 510043a
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 2b
-						####	Change the past, more!
-						Wow, now that I see what you can do to tidy up the past,
-						I realise I want more
-
-						Please add your favourite movie to the list of movies
-						- but make it look like it was added with all the other movies.
-						Note:
-						Once again, you won't be able to push your changes - but that's ok.
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 2b
-						####	Solution
-						```bash
-						$ git log --oneline
-						```
-						```bash
-						# This will be more complex, from within this command you'll need to:
-						#   $ echo '* Highlander II' >> lists/movies.txt
-						#   $ git add lists/movies.txt
-						#   $ git commit --amend
-						#   $ git rebase --continue
-						$ git rebase --interactive b9fb9c8
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 3
-						####	Join 2 repositories together
-						We have been working as two teams for a while now, and we have realised
-						that the two teams are so interlinked that we should be all working from
-						the same repository,
-
-						Please join https://github.com/cat-train/example1.git and
-						https://github.com/cat-train/example2.git together!
-
-						Of course, I would like to keep all files and history from both teams intact.
-						Note:
-						This is a true story
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 3
-						####	Solution
-						```bash
-						$ cd /tmp/example2
-
-						# Add another remote!
-						$ git remote add ex1 https://github.com/cat-train/example1.git
-
-						# Fetch the commits from example1 into this repo
-						$ git fetch ex1
-
-						# Merge ex1/master into origin/master
-						$ git merge ex1/master
-						$ # git push origin master
-						```
-						Note:
-						Discuss
-
-						* If there were conflicts, we could resolve them, or put the
-						projects into subdirs first
-
-						* We could have used the directory /tmp/example1/.git as the URL
-						  for ex1 - that would have allowed us to include our bugfix
-						  into the merge
-						* We still could!, and we could then cherry-pick our bugfix in!
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 4
-						####	Github
-						Please create a github account, then 'fork' the repository
-						'https://github.com/cat-train/example3'
-
-						Then make a change, and create a pull request so I can accept your work.
-
-						You can do the whole thing in your browser!
-						Note:
-						This will take a bit more time, help with
-						- Github account
-						- SSH keys
-						- fork vs clone
-						- editing inside the browser
-						- pull requests
-						- etc...
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 4b
-						#### Git Gui
-						That was great, but now lets try again, using ```git-gui``` to
-						make and push your commit.
-
-						I'll get you started...
-						```bash
-						$ cd /tmp
-						$ git clone https://github.com/YOURNAME/example3.git
-						$ cd /tmp/example3
-						$ echo 'Sean Connery' > $YOURNAME.txt
-						$ git gui
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 5
-						####	Mess with a remote branch
-						Using your github account, push a 'password' to github.
-
-						```bash
-						$ echo 'butter' > password.txt
-						$ git add password.txt
-						$ git commit -m "I may regret this...."
-						$ git push origin master
-						```
-						Now make it go away.
-
-						There are several ways to do this, but is it really gone?
-					</section>
-					<section>
-					<div data-markdown>
-						### Problem 5
-						####	Solution
-						```bash
-						# Amend the commit and force push
-						$ echo '' > password.txt
-						$ git commit -am "Nothing to see here..."
-						$ git push -f origin master
-						```
-					</div>
-					<div data-markdown class="fragment">
-						```bash
-						# Rewind and force push
-						$ git reset --hard HEAD^
-						$ git push -f origin master
-						```
-					</div>
-					<div data-markdown class="fragment">
-						```bash
-						# Delete the remote branch and push a new one
-						$ git push origin :master
-						$ git reset --hard HEAD^
-						$ git push origin master
-						```
-					</div>
-						<aside class="notes">
-						  Note the odd syntax for deleting a branch!
-						</aside>
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 6
-						####	Abort a merge
-						Go to your 'example2' project, and try to merge in the 'kittens'
-						branch...
-						```bash
-						# Create a conflict
-						$ cd /tmp/example2
-						$ git merge origin/kittens
-						$ git status
-						```
-						Oh, no, there are conflicts!  Get me out of here!
-						Note:
-						or a rebase ...
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 6
-						####	Solution
-						```bash
-						# Too hard, I'll try again some other time
-						$ git merge --abort
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 6b
-						#### Use tools to try to resolve a conflict
-						Go to your 'example2' project, and try to merge in the 'kittens'
-						branch...
-						```bash
-						# Create a conflict
-						$ cd /tmp/example2
-						$ git merge origin/kittens
-						$ git status
-						```
-						There are conflicts, but I think you can handle them!
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 6b
-						####	Solution
-						```bash
-						# Let's give it a go...
-						$ git mergetool
-						```
-						Note:
-						Also, we should try this again after installing 'meld'
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 7
-						#### Throw away your changes
-						What if you make some changes, and you want to get back to safety?
-						```bash
-						$ cd /tmp/example2
-						$ echo 'A dragon will fix it' > lists/links.txt
-						$ rm lists/movies.txt
-						$ git status
-						```
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Problem 7
-						#### Solution
-						```bash
-						$ git reset --hard
-						```
-						Note:
-						Could we use git-reset? git-checkout? gitk? git-clean?
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						###  The End
-						#### That's really it this time
-						Note:
-						Extra things to discuss, to fill in time:
-						- Setting up a bare repo
-						- git add/commit -p
-						- git bisect
-						- git reflog
-					</section>
-				</section>
-			</div>
+                        ### Change Logs
+                        Use `git log`
+                        ```bash
+                        $ git log
+                        commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
+                        Author: Evan Giles <evan@catalyst.net.nz>
+                        Date:   Thu Dec 16 11:53:48 2010 +1300
+
+                            Rename the file.
+
+                        commit f7123c5ffdccbed11b50b0b74a181186e1a13028
+                        Author: Evan Giles <evan@catalyst.net.nz>
+                        Date:   Thu Dec 16 11:53:25 2010 +1300
+
+                            Make it executable
+
+                        commit 8657bea3230587abdcbe39e6bf699c9ee8f505a6
+                        Author: Evan Giles <evan@catalyst.net.nz>
+                        Date:   Thu Dec 16 11:52:51 2010 +1300
+
+                            Add a message.
+                        ```
+                        By default the output is piped into $PAGER
+                        Note:
+                        If $PAGER is not set, defaults to using `less`.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Change Logs
+                        ```bash
+                        # You can change the output format
+                        $ git log --pretty=oneline
+                        ```
+                        ```bash
+                        # Or specify which file or directory you are interested in
+                        $ git log README.txt
+                        ```
+                        ```bash
+                        # There are lots of options..
+                        $ git log --pretty=oneline --since='5 minutes ago' --graph
+                        ```
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Change Logs - Blame
+                        Show who made changes to what line
+
+                        ```bash
+                        $ git blame filename.pl
+                        b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+                        b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2)
+                        b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
+                        9c08faf4 (Bad Coder   2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+                        ```
+                        Note:
+                        Note the short versions of the commit hashes, so you can check in the logs for commit messages, etc.
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Change logs - GUI
+                        Visualising your logs:  `gitk` / `qgit` / `gitg` / etc.
+                        ![image](images/gitk.png "gitk")
+                        Note:
+                        For something like VSCode, the 'Git Branch' extension will give you a similar view.
+                    </section>
+                </section>
+
+                <section> <!-- Concepts 2 ... -->
+                    <section data-markdown>
+                        ## More on Commits
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Commit Concepts
+                        * A commit is git's fundamental building block
+                        * Each commit refers to a previous commit (its parent)
+                        * Commits can be referenced by their SHA1 checksum
+                            * or an abbreviation of it
+                            * or by a number of things that might refer to them (e.g. tags)
+                        * ```gitk``` and other tools can help you to visualise the commit history
+                    </section>
+                    <section data-markdown>
+                        ### Commits are...
+
+                        ## Totally Unchangeable!
+                        <aside class="notes">
+                        So once you have committed your work, it is really safe in the repo.
+                        </aside>
+                    </section>
+                </section>
+
+                <section> <!-- branching and merging -->
+                    <section data-markdown>
+                        ## Branches
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Branching - List
+                        To show branches, use '```git branch```'.
+                        ```bash
+                        $ git branch
+                        * master
+                        ```
+                        Only one branch, called ```master```.
+
+                        The '*' indicates that it is your current branch.
+                        Note:
+                        You can also use 'git status'.
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Branching - Create
+                        ```bash
+                        # Create a new branch
+                        $ git branch feature1
+                        ```
+                        ```bash
+                        $ git branch
+                        * master
+                          feature1
+                        ```
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Branching - Create somewhere else
+                        By default a new branch will be created at the commit you
+                        already have checked out
+
+                        You can also create a new branch at another commit
+                        ```bash
+                        $ git branch feature2 feature1
+                        ```
+                        ```bash
+                        $ git branch
+                          feature2
+                        * master
+                          feature1
+                        ```
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Branching - Change branch
+                        Use ```git checkout```
+                        ```bash
+                        $ git checkout feature1
+                        Switched to branch "feature1"
+                        ```
+                        ```bash
+                        $ git branch
+                          feature2
+                          master
+                        * feature1
+                        ```
+                        Note:
+                        - Don't forget to see how this is shown in ```gitk```
+                        - Most people use `git checkout -b` to create branches
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Branching - What's the deal?
+                        ```bash
+                        # Make a change to a file (and commit that change)
+                        $ echo "... From feature1" >> README.txt
+                        $ git commit README.txt
+                        Created commit a6ed2cf: From feature1
+                        1 files changed, 1 insertions(+), 0 deletions(-)
+                        ```
+                        ```bash
+                        # Check the file..
+                        $ cat README.txt
+                        DATA
+                        ... From feature1
+                        ```
+                        ```bash
+                        # Switch to a different branch (master)
+                        $ git checkout master
+                        Switched to branch "master"
+                        ```
+                        ```bash
+                        # The text we added ain't there
+                        $ cat README.txt
+                        DATA
+                        ```
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Branching - Why?
+                        * Many (most) projects have a branch for each release
+                        * Branches are useful for experimental features / refactoring
+                        * Branches happen (without even trying) when several people try
+                          to work on the same project - but I'll explain that soon ;)
+
+                        Note:
+                        It is useful to think of branches as an 'alternative reality'
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Merging - Simple Case
+                        ```bash
+                        # You should now be on the 'master' branch
+                        $ git status
+                        # On branch master
+                        nothing to commit (working directory clean)
+                        ```
+                        Use ```git merge```
+                        ```bash
+                        $ git merge feature1
+                        Updating e766bfb..a6ed2cf
+                        Fast forward
+                        README.txt |    1 +
+                        1 files changed, 1 insertions(+), 0 deletions(-)
+                        ```
+                        If there are no conflicts, this may make a new commit object,
+                        but in this case, we have done a ```fast forward``` merge
+
+                        Note:
+                        - We are merging changes *IN*, from somewhere else
+                        - explain the fast forward bit
+                        - talk about merges being line by line, so not for binary data
+                        - use ```gitk``` to see what happened
+
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Merging - get ready for a conflict
+                        Conflicts are more difficult (lets create one)
+                        ```bash
+                        # Make a change to a file, commit that change to 'master'
+                        $ echo "New value for data" > README.txt
+                        $ git commit -a -m 'update script with a new value'
+
+                        # Change branches, make a change, and commit
+                        $ git checkout feature1
+                        $ echo "different value for data" > README.txt
+                        $ git commit -a -m 'update script with a different value'
+
+                        # Go back to the master branch, if we try to merge - there
+                        # will be a problem!
+                        $ git checkout master
+                        ```
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Merging - you can't do that
+                        If there is a conflict then git will stop and make you fix it.
+                        ```bash
+                        $ git merge feature1
+                        Auto-merged README.txt
+                        CONFLICT (content): Merge conflict in README.txt
+                        Automatic merge failed; fix conflicts and then commit the result.
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        # Unmerged paths:
+                        #   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
+                        #
+                        #       both modified:      README.txt
+                        #
+                        no changes added to commit (use "git add" and/or "git commit -a")
+                        ```
+                        ```bash
+                        $ cat README.txt
+                        <<<<<<< HEAD:README.txt
+                        New value for data
+                        =======
+                        different value for data
+                        >>>>>>> feature1:README.txt
+                        ```
+                        Note:
+                          Mention git merge --abort
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Merging - Fixing conflicts
+                        Lots of ways to help fix things up: hand-edit, `xxdiff`,
+                        `smartmerge`, etc.
+
+                        We'll just fix it by editing the file:
+                        ```bash
+                        $ gedit README.txt
+                        $ cat README.txt
+                        New, different value for data
+                        ```
+                        But Git still won't allow us to continue...
+                        ```bash
+                        $ git commit
+                        U    README.txt
+                        fatal: 'commit' is not possible because you have unmerged files.
+                        Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
+                        appropriate to mark resolution and make a commit, or use 'git commit -a'.
+                        ```
+                        Note:
+                        Git does this to make you be explicit about staging the conflicted files you're resolving. So...
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Merging - Success at last!
+                        We need to tell Git that it has been fixed before we commit:
+                        ```bash
+                        $ git add README.txt
+                        $ git commit
+                        Created commit a411f2a: Merge branch 'feature1'
+                        ```
+                        In this case the commit message is automatically created, but
+                        you can edit it if you want.
+                        ```bash
+                        Merge branch 'feature1'
+
+                        Conflicts:
+
+                            README.txt
+                        ```
+                        Note:
+                        - Once again, 'git add' is saying 'this is the proposed next commit'
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Merging - How does it look?
+                        Looking at the trees in gitk helps you understand stuff.
+                        ```bash
+                        $ gitk
+                        ```
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown>
+                        ## Tags
+                    </section>
+                    <section data-markdown>
+                        ### Tags
+                        * Tags allow you to mark specific points (i.e. commits) in history as being important.
+
+                        * Often people use this functionality to mark release points.
+
+                        ```bash
+                        # This is a 'lightweight' tag
+                        $ git tag v1
+
+                        # This is an 'annotated' tag
+                        $ git tag v2 -m 'this might be important later!'
+                        ```
+                        ```bash
+                        # List the existing tags
+                        $ git tag
+
+                        # Show details of specific tags
+                        $ git show v1
+                        $ git show v2
+                        ```
+                    </section>
+                </section>
+
+                <section> <!-- Where are we? Where are we going? -->
+                    <section data-markdown>
+                        ## Local vs. Remote Repositories
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ###  Where are we?
+
+                        ![image](images/local.png "")
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ###  Where are we going?
+
+                        ![image](images/local-remote.png "")
+                        Note:
+                        What is the opposite of push? (it's not pull!)
+
+                        Recommend "git fetch; git merge" in place of "git pull"
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ## Remote Repositories
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Creating Repositories - Revisited
+                        We already know how to create a new repository...
+                        ```bash
+                        $ git init
+                        Initialized empty Git repository in .git/
+                        ```
+                        ...but normally, you want to join in with an existing project
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Clone an existing repository
+                        In practise, you're more likely to use '```git clone```'.
+
+                        To check out the source code of a random project:
+                        ```bash
+                        $ cd /tmp
+                        $ git clone https://github.com/cat-train/example1.git
+                        Cloning into example1...
+                        remote: Counting objects: 90, done.
+                        remote: Compressing objects: 100% (43/43), done.
+                        remote: Total 90 (delta 44), reused 90 (delta 44)
+                        Receiving objects: 100% (90/90), 31.62 KiB, done.
+                        Resolving deltas: 100% (44/44), done.
+                        $ cd example1
+                        $ ls
+                        $ gitk
+                        ```
+                        Note:
+                        - did you notice the oddly coloured branch called 'remotes/origin/master'?
+                        - `git branch -a` to show all branches
+                        - `git remote -v` to see all remote repositories
+
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Terminology: Origin
+                        You can see all branches (including the remote ones) with the
+                        ```git branch``` command
+                        ```bash
+                        $ git branch -a
+                        * master
+                          remotes/origin/master
+                        ```
+                        Note:
+                        - origin is where you cloned from
+                        - you don't need to type 'remotes' to refer to these branches
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Terminology: Remote branches
+                        * Remote branches are references (pointers) to the state of
+                        branches in your remote repositories.
+
+                        * They're local branches
+                        that you can't move; they're moved automatically for you
+                        whenever you do any network communication.
+
+                        * Remote branches act
+                        as bookmarks to remind you where the branches on your remote
+                        repositories were the last time you connected to them.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Remote repositories - URLs
+                        ```bash
+                        # Clone an existing repository via HTTP (you've already done this)
+                        $ git clone https://github.com/cat-train/example1.git
+                        ```
+                        ```bash
+                        # Clone an existing repository via SSH (this won't work for you)
+                        $ git clone ssh://git.catalyst.net.nz/git/public/git.git
+                        ```
+                        ```bash
+                        # Clone an existing local repository (this is only slightly mad)
+                        $ git clone test test2
+                        ```
+                    </section>
+                </section>
+
+                <section> <!-- Ways to work -->
+                    <section data-markdown>
+                        ## Distributed Version Control
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Git is a *Distributed* VCS
+                        #### Corporate Workflow
+                        You will probably use this
+
+                        ![image](images/workflow-a.png "corporate")
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Git is a *Distributed* VCS
+                        #### Integration manager Workflow
+                        A quick diversion: http://www.github.com
+
+                        ![image](images/workflow-b.png "github")
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Git is a *Distributed* VCS
+                        #### Dictator Workflow
+                        This is how the Linux kernel is managed
+
+                        ![image](images/workflow-c.png "linux")
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Git is a *Distributed* VCS
+                        #### Peer to peer Workflow
+
+                        ![image](images/workflow-d.png "p2p")
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Git Flow
+                        http://nvie.com/posts/a-successful-git-branching-model/
+
+                        ![image](images/gitflow_1.png "gitflow")
+                        Note:
+                        - It seems excessive, but it's not a waste of time
+                        - origin/master represents prod-ready
+                        - develop is generally where things begin
+                        - hotfixes, releases, features
+                        - merge with '--no-ff'
+                        - branches get deleted when you are finished with them
+                        - Use of pull requests in stash makes code review, merging easy
+                    </section>
+                </section>
+
+                <section> <!-- Alice and Bob -->
+                    <section data-markdown>
+                        ## Collaboration
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        Once upon a time....
+
+                        Alice and Bob wanted to do some work
+
+                        ![image](images/lastthing1.png "")
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        So they both made some changes....
+
+                        ![image](images/lastthing2.png "")
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        Alice pushes her changes...
+
+                        ![image](images/lastthing3.png "")
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        But Bob has a problem...
+
+                        ![image](images/lastthing3a.png "")
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        Now Bob needs to fetch the changes from Alice
+
+                        ![image](images/lastthing4.png "")
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        and merge them with his work
+
+                        ![image](images/lastthing5.png "")
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        They all lived happily ever after...
+
+                        ![image](images/lastthing6.png "")
+                        Note:
+                        Do exercise here if you have time.
+                    </section>
+
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Now we can try it out
+                        ```bash
+                        # Clone a new repository
+                        $ cd /tmp
+                        $ git clone https://github.com/git-training-open/alice1.git
+                        $ cd /tmp/alice1
+                        ```
+                        ```bash
+                        # Create a new file (and commit)
+                        $ touch $YOURNAME.txt
+                        $ git add $YOURNAME.txt
+                        $ git commit
+                        ```
+                        ```bash
+                        # Push your changes to the shared repository
+                        # git-training-open / openup1
+                        $ git push origin master
+                        ```
+                        ```bash
+                        # You are now Bob!
+                        $ git fetch
+                        $ git merge origin/master
+                        ```
+                        Note:
+                        Explain What is going on with "origin" and "master" here:
+
+                        - git push origin master
+                        - git merge origin/master
+
+                        Also introduce the idea that commands have defaults:
+
+                        - git push &rarr; git push origin master
+                    </section>
+                </section>
+
+                <section> <!-- Stuff we have missed ... -->
+                    <section data-markdown>
+                        ## Managing Commits
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Changing your commits
+                        You can 'change' the most recent commit using ```git commit```
+                        ```bash
+                        $ git add something.txt
+                        $ git commit --amend
+                        ```
+                        This is quite a big deal...
+                        Note:
+                        Will someone please pull me up on this?!
+
+                        Explain how this works
+
+                        - That you are not changing anything here
+                        - just making a new commit which is quite like the old one
+                        - and then moving the labels around
+
+                        Warning:
+
+                        - Do not change commits that exist outside your repository.
+                        - If you do, people will hate you, and you'll be scorned
+                          by friends and family.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Copy a commit
+                        * You can copy a single commit *from* one branch *to* another
+
+                        * You might want to do this if, for example, a bug is discovered
+                        on your development branch that also needs to be applied to your
+                        production branch.
+                        ```bash
+                        $ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+                        ```
+                        Note:
+                        - The commit created will look the same, but have a
+                        different commit id.
+
+                        - Note that the cherry-pick can fail, if there are conflicts.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Undo a commit
+                        You can undo a previous commit with '```git revert```'.
+
+                        This makes a new commit, that is the exact opposite of a
+                        previous commit in your repository.
+
+                        The previous commit remains intact.
+                        ```bash
+                        $ git revert e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+                        ```
+                        ```bash
+                        $ git log --pretty=oneline
+                        830d77273fc24c0708403102a05a5a5ffecfce93 Revert "Introduce bug"
+                        d7a1ee454168081227ee82c5f11bb08f77e2643d Unrelated change
+                        e43a6fd3e94888d76779ad79fb568ed180e5fcdf Introduce bug
+                        ```
+                        Note:
+                        - When you revert the commit, you get dropped into an editor
+                        in case you want to can edit the commit message.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Getting serious with copying commits
+                        As an alternative to merging, you can use '```git rebase```'.
+
+                        Instead of making a new commit which joins two branches together,
+                        it copies your changes on top of the other branch...
+
+                        You use it just like a merge.
+                        ```bash
+                        $ git rebase origin/master
+                        ```
+                        Note:
+                        Draw what this does, contrast it with a merge
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Rebase vs. Merge?
+                        > One point of view on this is that your repository's commit
+                        > history is a record of what actually happened. It's a historical
+                        > document, valuable in its own right, and shouldn't be tampered
+                        > with. From this angle, changing the commit history is almost
+                        > blasphemous; you're lying about what actually transpired. So
+                        > what if there was a messy series of merge commits? That's how
+                        > it happened, and the repository should preserve that for
+                        > posterity.
+
+                        Note:
+                        - History is an audit trail
+                        - From _Pro Git_, by Chacon and Straub
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Rebase vs. Merge
+                        > The opposing point of view is that the commit history is the
+                        > story of how your project was made. You wouldn't publish the
+                        > first draft of a book, and the manual for how to maintain your
+                        > software deserves careful editing. This is the camp that uses
+                        > tools like rebase and filter-branch to tell the story in the
+                        > way that's best for future readers.
+                        Note:
+                        - History is a story
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### The Perils of Rebasing
+                        > Ahh, but the bliss of rebasing isn’t without its drawbacks,
+                        > which can be summed up in a single line:
+                        > **Do not rebase commits that exist outside your repository.**
+                        > If you follow that guideline, you’ll be fine. If you don’t,
+                        > people will hate you, and you’ll be scorned by friends and family.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### The Perils of Rebasing
+                        > When you rebase stuff, you’re abandoning existing commits and
+                        > creating new ones that are similar but different. If you push
+                        > commits somewhere and others pull them down and base work on
+                        > them, and then you rewrite those commits with git rebase and
+                        > push them up again, your collaborators will have to re-merge
+                        > their work and things will get messy when you try to pull their
+                        > work back into yours.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### A more advanced rebase
+                        ```bash
+                        $ git rebase --interactive origin/master
+                        ```
+                        ```bash
+                        pick a3895fe Try a bit harder to return a useful value from all methods
+                        pick 180e665 Release engineering (0.8)
+                        pick 2a6d832 Update Build.PL for newer build tools
+                        pick e1fac16 Use semantic versioning (http://semver.org/)
+
+                        # Rebase aa8a695..e1fac16 onto aa8a695
+                        #
+                        # Commands:
+                        #  p, pick = use commit
+                        #  r, reword = use commit, but edit the commit message
+                        #  e, edit = use commit, but stop for amending
+                        #  s, squash = use commit, but meld into previous commit
+                        #  f, fixup = like "squash", but discard this commit's log message
+                        #  x, exec = run command (the rest of the line) using shell
+                        #
+                        # These lines can be re-ordered; they are executed from top to bottom.
+                        #
+                        # If you remove a line here THAT COMMIT WILL BE LOST.
+                        # However, if you remove everything, the rebase will be aborted.
+                        #
+                        ```
+                    </section>
+                </section>
+
+                <section> <!-- Wrap up -->
+                    <section data-markdown>
+                        ## Loose Ends
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Loose ends...
+                        #### git reset (simple)
+                        If you provide a filename, it is the opposite of '```git add```'
+                        ```bash
+                        # This will overwrite the index with whatever is in the
+                        # latest commit
+                        $ git reset README.txt
+                        ```
+                        Note:
+                        - `git status` has been telling us about this all along....
+                    </section>
+                    <section>
+                    <div data-markdown>
+                        ### Loose ends...
+                        #### git reset (interesting)
+                        If you don't provide a filename, it allows you to play with your
+                        'trees'
+                        ```bash
+                        # Move your current branch to the previous commit
+                        $ git reset --soft HEAD^
+                        ```
+                        Note:
+                        Trees?
+
+                        - HEAD:last commit, parent for next commit
+                        - index: proposed next commit
+                        - working directory: sandbox
+                    </div>
+                    <div data-markdown class="fragment">
+                        ```bash
+                        # Move your current branch to the previous commit,
+                        # AND reset the index to match that commit
+                        $ git reset --mixed HEAD^
+                        ```
+                    </div>
+                    <div data-markdown class="fragment">
+                        ```bash
+                        # Move your current branch to the previous commit,
+                        # AND reset the index to match that commit
+                        # AND reset your working tree to match that commit
+                        $ git reset --hard HEAD^
+                        ```
+                    </div>
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Loose ends...
+                        #### git stash (hide)
+                        You can hide your changes away for later use
+                        ```bash
+                        $ git status
+                        # On branch master
+                        #
+                        #    modified:   myscript.pl
+
+                        $ git stash
+                        Saved working directory and index state WIP on master: 5cc4a26 added a file
+                        ```
+                        ```bash
+                        $ git status
+                        # On branch master
+                        nothing to commit (working directory clean)
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Loose ends...
+                        #### git stash (restore)
+                        Later on, you can restore your changes
+                        ```bash
+                        $ git status
+                        # On branch master
+                        nothing to commit (working directory clean)
+
+                        $ git stash pop
+                        # On branch master
+                        #
+                        # Changes not staged for commit:
+                        #   (use "git add &lt;file>..." to update what will be committed)
+                        #   (use "git checkout -- &lt;file>..." to discard changes in working directory)
+                        #
+                        #       modified:   myscript.pl
+                        no changes added to commit (use "git add" and/or "git commit -a")
+                        Dropped refs/stash@{0} (1a69a03f554a61ea50b3a9e2eb1182608cb50c8e)
+                        ```
+                        Note:
+                        You can manage multiple stashes if you want....but that gets confusing :(
+                    </section>
+
+                    <section>
+                        <div data-markdown>
+                            ###  The End
+                            ####  Questions?
+                        </div>
+                        <div class="fragment">
+                        <div data-markdown>
+                            The official Git site &rarr; http://git-scm.com/about
+
+                            Data Assurance &rarr; http://git-scm.com/about/info-assurance
+
+                            Cheat sheet &rarr; http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf
+
+                            Github &rarr; http://github.com
+
+                            ---------------------
+                        </div>
+                        <small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small><br>
+
+                        <small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+                        </div>
+                        <aside class="notes">
+                            Thing to discuss to fill in time<br>
+                            - git add/commit -p<br>
+                            - git reflog<br>
+                            - git bisect<br>
+                        </aside>
+                    </section>
+                </section>
+
+                <section> <!-- Examples -->
+                    <section data-markdown>
+                        ## Exercises
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 1
+                        #### Fix a production bug
+                        We have just discovered that there is a program in production that
+                        is not executable - the site is down!
+
+                        But we can't deploy the latest code because it's not ready...
+
+                        Please find the release tag 'release-1-0' in the repository
+                        'https://github.com/cat-train/example1.git', and fix the bug!
+                        Note:
+                        Note that these problems are NOT a test - you haven't been given
+                        enough information yet
+
+                        It is just some everyday problems that we can work through
+                        together...
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 1
+                        #### Solution
+                        ```bash
+                        # Clone the repository
+                        $ cd /tmp
+                        $ git clone https://github.com/cat-train/example1.git
+                        $ cd /tmp/example1
+
+                        # Make a new branch (at the point we want to change)
+                        $ git checkout -b release-1 release-1-0
+
+                        # Fix the problem
+                        $ chmod +x program
+                        $ git commit -a -m 'make the program executable'
+                        $ # git push origin release-1
+                        ```
+                        Note:
+                        Discuss
+                        * The fact that we can't push to that URL
+                        * And even if we could, we can't push to the master branch
+                        * What would we normally do next (cherry-pick / merge),
+                          probably not rebase
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 2
+                        ####    Change the past
+                        I have just noticed that
+                        https://github.com/cat-train/example2.git has a dodgey
+                        commit.  The commit message is 'Oooh, this smells a bit
+                        funny...'.
+
+                        Please make it go away
+                        Note:
+                        Once again, you won't be able to push your changes - but that's
+                        ok.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 2
+                        ####    Solution
+                        ```bash
+                        # Clone the repository
+                        $ cd /tmp
+                        $ git clone https://github.com/cat-train/example2.git
+                        $ cd /tmp/example2
+                        ```
+                        ```bash
+                        # Work out what we want to do
+                        $ git log --oneline
+                        5c90449 Remove the README file
+                        3bec061 Some more stuff
+                        3114205 Oooh, this smells a bit funny...
+                        510043a Another list - snakes
+                        6a624b3 Add a list of lists
+                        ```
+                        ```bash
+                        # Rewrite the past
+                        $ git rebase --interactive 510043a
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 2b
+                        ####    Change the past, more!
+                        Wow, now that I see what you can do to tidy up the past,
+                        I realise I want more
+
+                        Please add your favourite movie to the list of movies
+                        - but make it look like it was added with all the other movies.
+                        Note:
+                        Once again, you won't be able to push your changes - but that's ok.
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 2b
+                        ####    Solution
+                        ```bash
+                        $ git log --oneline
+                        ```
+                        ```bash
+                        # This will be more complex, from within this command you'll need to:
+                        #   $ echo '* Highlander II' >> lists/movies.txt
+                        #   $ git add lists/movies.txt
+                        #   $ git commit --amend
+                        #   $ git rebase --continue
+                        $ git rebase --interactive b9fb9c8
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 3
+                        ####    Join 2 repositories together
+                        We have been working as two teams for a while now, and we have realised
+                        that the two teams are so interlinked that we should be all working from
+                        the same repository,
+
+                        Please join https://github.com/cat-train/example1.git and
+                        https://github.com/cat-train/example2.git together!
+
+                        Of course, I would like to keep all files and history from both teams intact.
+                        Note:
+                        This is a true story
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 3
+                        ####    Solution
+                        ```bash
+                        $ cd /tmp/example2
+
+                        # Add another remote!
+                        $ git remote add ex1 https://github.com/cat-train/example1.git
+
+                        # Fetch the commits from example1 into this repo
+                        $ git fetch ex1
+
+                        # Merge ex1/master into origin/master
+                        $ git merge ex1/master
+                        $ # git push origin master
+                        ```
+                        Note:
+                        Discuss
+
+                        * If there were conflicts, we could resolve them, or put the
+                        projects into subdirs first
+
+                        * We could have used the directory /tmp/example1/.git as the URL
+                          for ex1 - that would have allowed us to include our bugfix
+                          into the merge
+                        * We still could!, and we could then cherry-pick our bugfix in!
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 4
+                        ####    Github
+                        Please create a github account, then 'fork' the repository
+                        'https://github.com/cat-train/example3'
+
+                        Then make a change, and create a pull request so I can accept your work.
+
+                        You can do the whole thing in your browser!
+                        Note:
+                        This will take a bit more time, help with
+                        - Github account
+                        - SSH keys
+                        - fork vs clone
+                        - editing inside the browser
+                        - pull requests
+                        - etc...
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 4b
+                        #### Git Gui
+                        That was great, but now lets try again, using ```git-gui``` to
+                        make and push your commit.
+
+                        I'll get you started...
+                        ```bash
+                        $ cd /tmp
+                        $ git clone https://github.com/YOURNAME/example3.git
+                        $ cd /tmp/example3
+                        $ echo 'Sean Connery' > $YOURNAME.txt
+                        $ git gui
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 5
+                        ####    Mess with a remote branch
+                        Using your github account, push a 'password' to github.
+
+                        ```bash
+                        $ echo 'butter' > password.txt
+                        $ git add password.txt
+                        $ git commit -m "I may regret this...."
+                        $ git push origin master
+                        ```
+                        Now make it go away.
+
+                        There are several ways to do this, but is it really gone?
+                    </section>
+                    <section>
+                    <div data-markdown>
+                        ### Problem 5
+                        ####    Solution
+                        ```bash
+                        # Amend the commit and force push
+                        $ echo '' > password.txt
+                        $ git commit -am "Nothing to see here..."
+                        $ git push -f origin master
+                        ```
+                    </div>
+                    <div data-markdown class="fragment">
+                        ```bash
+                        # Rewind and force push
+                        $ git reset --hard HEAD^
+                        $ git push -f origin master
+                        ```
+                    </div>
+                    <div data-markdown class="fragment">
+                        ```bash
+                        # Delete the remote branch and push a new one
+                        $ git push origin :master
+                        $ git reset --hard HEAD^
+                        $ git push origin master
+                        ```
+                    </div>
+                        <aside class="notes">
+                          Note the odd syntax for deleting a branch!
+                        </aside>
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 6
+                        ####    Abort a merge
+                        Go to your 'example2' project, and try to merge in the 'kittens'
+                        branch...
+                        ```bash
+                        # Create a conflict
+                        $ cd /tmp/example2
+                        $ git merge origin/kittens
+                        $ git status
+                        ```
+                        Oh, no, there are conflicts!  Get me out of here!
+                        Note:
+                        or a rebase ...
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 6
+                        ####    Solution
+                        ```bash
+                        # Too hard, I'll try again some other time
+                        $ git merge --abort
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 6b
+                        #### Use tools to try to resolve a conflict
+                        Go to your 'example2' project, and try to merge in the 'kittens'
+                        branch...
+                        ```bash
+                        # Create a conflict
+                        $ cd /tmp/example2
+                        $ git merge origin/kittens
+                        $ git status
+                        ```
+                        There are conflicts, but I think you can handle them!
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 6b
+                        ####    Solution
+                        ```bash
+                        # Let's give it a go...
+                        $ git mergetool
+                        ```
+                        Note:
+                        Also, we should try this again after installing 'meld'
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 7
+                        #### Throw away your changes
+                        What if you make some changes, and you want to get back to safety?
+                        ```bash
+                        $ cd /tmp/example2
+                        $ echo 'A dragon will fix it' > lists/links.txt
+                        $ rm lists/movies.txt
+                        $ git status
+                        ```
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ### Problem 7
+                        #### Solution
+                        ```bash
+                        $ git reset --hard
+                        ```
+                        Note:
+                        Could we use git-reset? git-checkout? gitk? git-clean?
+                    </section>
+                    <section data-markdown data-separator-notes="^Note:">
+                        ###  The End
+                        #### That's really it this time
+                        Note:
+                        Extra things to discuss, to fill in time:
+                        - Setting up a bare repo
+                        - git add/commit -p
+                        - git bisect
+                        - git reflog
+                    </section>
+                </section>
+            </div>
 
             <div class="footer">
                 <div class="scarf">
