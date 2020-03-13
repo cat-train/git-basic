@@ -188,8 +188,8 @@
 						* Subversion
 						* Darcs
 						* Perforce
-						* Bzr
-						* ...
+						* GNU Bazaar (`bzr`)
+						* And more...
 					</section>
 					<section data-markdown>
 						<div data-markdown>
@@ -212,18 +212,13 @@
 						## Installation
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Installing
+						### Installing on Ubuntu Linux
 						```bash
 						# Required
 						$ sudo aptitude install git
-						```
-						```bash
+
 						# Recommended
 						$ sudo aptitude install gitk git-gui
-						```
-						```bash
-						# FYI...
-						$ sudo aptitude search git
 						```
 						Note:
 						Pause here to explain the way we are showing commands
@@ -231,10 +226,10 @@
 						* talk about '$' as the prompt, etc
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Installing (alternative OS)
-						* Go to [git-scm.org](http://git-scm.org "The home of git")
-						* Find the [Download link](http://git-scm.com/downloads "install instructions")
-						* Follow the instructions for your OS
+						### Installing manually (other OSes)
+						* Go to [git-scm.com](http://git-scm.com "The home of git")
+						  * Find the [Download link](http://git-scm.com/downloads "install instructions")
+						  * Follow the instructions for your OS
 						* For Windows:
 						 * When installing the package, it will ask some questions.
 						   Just take the defaults
@@ -249,7 +244,7 @@
 					</section>
 					<section data-markdown>
 						### Create a new repository
-						```git init```
+						'```git init```'
 						```bash
 						$ mkdir /tmp/test
 						$ cd /tmp/test
@@ -258,7 +253,7 @@
 						$ git init
 						Initialized empty Git repository in .git/
 						```
-						Check the status with ```git status```
+						Check the status with '```git status```'
 						```bash
 						$ git status
 						# On branch master
@@ -289,11 +284,17 @@
 						refs
 						```
 					</section>
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### What did that do?
 						Conceptually...
 
 						![overview](images/local-remote-small.png "overview")
+
+						Note:
+						* Working directory: where your current code lives
+						* Staging area: code that you've prepared to commit
+						* Local repo: code that you've bundled into a commit
+						* Remote repo: code that you've pushed to a server
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Getting help
@@ -304,6 +305,7 @@
 						# man git-COMMAND
 						$ man git-status
 						```
+						Check https://git-scm.com/doc for online manual.
 						Note:
 						The COMMANDs we have used so far are 'init' and 'status', so....
 					</section>
