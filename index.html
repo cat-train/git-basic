@@ -319,7 +319,7 @@
 						### Global configuration settings
 						Before we start...
 						```bash
-						# We need to tell git who you are - But it's OK to lie....
+						# We need to tell git who you are - but it's OK to lie for training purposes
 						$ git config --global user.name "Jed I. Night"
 						$ git config --global user.email "null@catalyst.net.nz"
 						```
@@ -328,9 +328,10 @@
 						$ git config --global core.editor gedit
 						$ git config --global core.editor wordpad
 						$ git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+						$ git config --global core.editor "code --wait"
 						```
 						```bash
-						# If you will be working on windows, but need to deal with unix
+						# If you will be working on Windows, but need to deal with Unix/MacOS
 						$ git help config
 						$ git config --global core.autocrlf true
 						```
@@ -338,11 +339,11 @@
 						Is anyone using Windows? you can't use gedit, and you don't
 						want to use notepad, try:
 
-						- notepad++
-						- wordpad
+						- Notepad++
+						- Wordpad
 						- ANYTHING else!
 
-						- but only within the current repository (which is /tmp/test)
+						- but only within the current repository (which is `/tmp/test`)
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Project configuration settings
@@ -366,11 +367,11 @@
 						$ git config --local -l
 						```
 						```bash
-						# Or just edit the files
-						# ..Global data is stored in "~/.gitconfig"
+						# Or just edit the files:
+						# -> Global data is stored in "~/.gitconfig"
 						$ gedit ~/.gitconfig
 
-						# ..Project data is stored in "/tmp/test/.git/config"
+						# -> Project data is stored in "/tmp/test/.git/config"
 						$ gedit /tmp/test/.git/config
 						```
 					</section>
